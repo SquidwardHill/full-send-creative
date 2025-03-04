@@ -6,6 +6,9 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
+import type { LinksFunction } from "@remix-run/node";
+
+import "./style.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +19,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-serif bg-galaxy text-cream-200 dark:bg-galaxy dark:text-cream-200">
         {children}
         <ScrollRestoration />
         <Scripts />
