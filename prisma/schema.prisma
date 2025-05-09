@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./node_modules/@prisma/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model CaseStudy {
+  id            String @id @default(cuid())
+  title         String
+  slug          String @unique
+  hook          String
+  resumeSummary String
+  tldr          String
+
+  challenge    String
+  task         String
+  contribution String
+  result       String
+
+  coverImageUrl String?
+  processImages String[] @default([])
+  themeColor    String   @default("purple-pizzazz-500")
+
+  tooling Tooling?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tooling {
+  id          String    @id @default(cuid())
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id])
+  caseStudyId String    @unique
+
+  planning String[] @default([])
+  design   String[] @default([])
+  frontend String[] @default([])
+  backend  String[] @default([])
+  build    String[] @default([])
+  testing  String[] @default([])
+  workflow String[] @default([])
+}

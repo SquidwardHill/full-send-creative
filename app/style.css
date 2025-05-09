@@ -7,9 +7,44 @@
   font-size: 8 200;
 }
 
+@font-face {
+  font-family: 'Starboy';
+  src: url('/fonts/STARBOY.otf'), format('otf');
+  font-weight: 100 1000;
+  font-size: 8 200;
+}
+
+:root {
+  --font-display: 'Space Grotesk', serif;
+  --font-serif: 'Space Grotesk', serif;
+  --font-sans: 'Starboy', sans-serif;
+  --font-accent: "Starboy", "sans-serif";
+  --color-cream-100: hsla(0, 38%, 90%, 1);
+  --color-cream-200: hsla(0, 39%, 84%, 0.8);
+  --color-galaxy: hsla(270, 92%, 3%, 1);
+  --color-bubblegum: hsla(309, 78%, 53%, 1);
+  --color-bubblegum-200: #ffcff0;
+  --color-bubblegum-400: #ff7ae2;
+  --color-bubblegum-500: #e52ac9;
+  --color-bubblegum-600: #fb13c9;
+  --color-purple-pizzazz-50: #fff3fe;
+  --color-purple-pizzazz-100: #ffe7fd;
+  --color-purple-pizzazz-200: #ffcdfa;
+  --color-purple-pizzazz-300: #ffa6f3;
+  --color-purple-pizzazz-400: #ff71eb;
+  --color-purple-pizzazz-500: #fa3be1;
+  --color-purple-pizzazz-600: #e52ac9;
+  --color-purple-pizzazz-700: #b8139b;
+  --color-purple-pizzazz-800: #96127e;
+  --color-purple-pizzazz-900: #7b1466;
+  --color-purple-pizzazz-950: #530042;
+}
+
 @theme {
-  --font-display: "Space Grotesk", "serif";
-  --font-serif: "Space Grotesk", "serif";
+  --font-display: 'Space Grotesk', serif;
+  --font-serif: 'Space Grotesk', serif;
+  --font-sans: 'Starboy', sans-serif;
+  --font-accent: "Starboy", "sans-serif";
   --color-cream-100: hsla(0, 38%, 90%, 1);
   --color-cream-200: hsla(0, 39%, 84%, 0.8);
   --color-galaxy: hsla(270, 92%, 3%, 1);
@@ -17,5 +52,15 @@
   --color-bubblegum-400: hsla(313, 100%, 74%, 1);
   --color-bubblegum-500: hsla(309, 78%, 53%, 1);
   --color-bubblegum-600: hsla(313, 97%, 53%, 1);
+  --color-purple-pizzazz-50: #fff3fe;
+  --color-purple-pizzazz-100: #ffe7fd;
+  --color-purple-pizzazz-200: #ffcdfa;
+  --color-purple-pizzazz-300: #ffa6f3;
+  --color-purple-pizzazz-400: #ff71eb;
+  --color-purple-pizzazz-500: #fa3be1;
+  --color-purple-pizzazz-600: #e52ac9;
+  --color-purple-pizzazz-700: #b8139b;
+  --color-purple-pizzazz-800: #96127e;
+  --color-purple-pizzazz-900: #7b1466;
+  --color-purple-pizzazz-950: #530042;
 }
-

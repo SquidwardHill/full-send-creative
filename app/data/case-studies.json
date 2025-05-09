@@ -1,0 +1,187 @@
+[
+  {
+    "slug": "automated-extension-filing-4868",
+    "title": "Automated Extension Filing Feature (IRS Form 4868) @ ComplYant",
+    "hook": "How we automated tax extension filing for our users",
+    "resumeSummary": "Led frontend development of ComplYant\u2019s IRS Form 4868 e-filing feature, delivering a full user-facing flow in under 3 months\u2014including dynamic form input, PDF generation, and real-time submission tracking\u2014used by customers to file directly from their dashboard.",
+    "tldr": "I led frontend development for ComplYant\u2019s IRS Form 4868 filing feature, which automated the process of requesting a federal tax extension. We launched in under three months, enabling users to e-file directly from their dashboard\u2014with pre-filled data, PDF receipts, and real-time status tracking.",
+    "challenge": "ComplYant helps small business owners stay informed and prepared for their business taxes. Our team set out to build a seamless, in-app flow for IRS Form 4868 that allowed users to file with confidence and clarity\u2014without leaving the platform.",
+    "task": "Automate IRS Form 4868, allowing users to e-file directly through the ComplYant dashboard.",
+    "contribution": "Led frontend, designed and implemented reusable UI components, shaped API contracts, and leveraged an internal design system to ship the feature fast and clean.",
+    "result": "Launched a high-impact feature in under 3 months. Twelve users filed directly from the platform before the IRS deadline, proving the value of internal tooling for tax automation.",
+    "themeColor": "purple-pizzazz-500",
+    "tooling": {
+      "design": [
+        "Figma"
+      ],
+      "frontend": [
+        "Vue 3",
+        "Inertia.js",
+        "Tailwind",
+        "Vite",
+        "Webpack",
+        "Laravel Mix",
+        "Filament Forms",
+        "PostCSS"
+      ],
+      "backend": [
+        "Laravel (PHP 8)",
+        "MySQL"
+      ],
+      "buildTools": [
+        "Git",
+        "NPM",
+        "Node",
+        "Composer",
+        "Docker (Laravel Sail)",
+        "Laravel Vapor"
+      ],
+      "testing": [
+        "PHPStan",
+        "PHPUnit",
+        "Laravel Dusk",
+        "Codesniffer",
+        "BrowserStack"
+      ],
+      "workflow": [
+        "GitTower",
+        "PHPStorm",
+        "Tinkerwell",
+        "Ray",
+        "TablePlus",
+        "Fish"
+      ]
+    }
+  },
+  {
+    "slug": "in-app-reservations",
+    "title": "In App Reservations @ Passive Investing",
+    "hook": "How we completely automated a 24 Hour, unmanned pickleball facility",
+    "resumeSummary": "Led the end-to-end design and frontend dev of a fully automated court reservation system\u2014no staff required.",
+    "tldr": "I designed and implemented a digital reservation flow that let users book court time and gain secure, time-boxed access to a fully automated facility. I led UX strategy, prototyping, and frontend development\u2014addressing edge cases like reservation collisions and entry pin management.",
+    "challenge": "Create a seamless reservation experience for an unstaffed pickleball facility. All interactions had to be intuitive and mobile-first, supporting flexible user types and complex logic behind the scenes.",
+    "task": "Design a reservation flow that feels effortless for users, while managing court availability, race conditions, time-boxed entry, and membership logic under the hood.",
+    "contribution": "Led design and frontend dev. Wrote Gherkin stories to drive the flow, built atomic components in Figma and Vue, and handled integration with APIs and facility access logic.",
+    "result": "Successfully released a polished self-serve booking experience with strong user and stakeholder feedback. System is now core to the product and franchise model.",
+    "themeColor": "purple-pizzazz-500",
+    "tooling": {
+      "design": [
+        "Figma"
+      ],
+      "frontend": [
+        "Vue 3",
+        "Tailwind",
+        "Vite"
+      ],
+      "backend": [
+        "Laravel (PHP 8)",
+        "MySQL"
+      ],
+      "buildTools": [
+        "Git",
+        "NPM",
+        "Node",
+        "Composer",
+        "Docker"
+      ],
+      "testing": [
+        "PHPStan",
+        "PHPUnit",
+        "Laravel Dusk",
+        "Codesniffer",
+        "BrowserStack"
+      ],
+      "workflow": [
+        "GitTower",
+        "PHPStorm",
+        "Tinkerwell",
+        "Ray",
+        "TablePlus",
+        "Fish"
+      ]
+    }
+  },
+  {
+    "slug": "metrics-reporting-dashboard",
+    "title": "Metrics Reporting @ Passive Investing",
+    "hook": "Transforming raw backend data into actionable insight for smarter business decisions",
+    "resumeSummary": "Designed and implemented a real-time business metrics dashboard for Passive Investing\u2019s new franchise venture, 24 Hour Pickleball. Built a fluent, chainable service architecture in Laravel to calculate and display 20+ KPIs across multiple models.",
+    "tldr": "Built a real-time dashboard that gave stakeholders instant visibility into business health. I created a fluent metrics service in Laravel to calculate KPIs with readable, composable queries.",
+    "challenge": "Stakeholders needed insight into performance for their new franchise venture. We needed a flexible way to display dozens of metrics tied to models like memberships, revenue, and usage trends.",
+    "task": "Create a reusable service layer to calculate business KPIs and display them in real-time on a Laravel admin dashboard.",
+    "contribution": "Built the Stat service + chainable query API. Implemented tests, ensured dev ergonomics, and deployed a clean admin UI backed by dynamic metrics.",
+    "result": "Shipped a maintainable metrics system that stakeholders rely on daily. The service layer is now reused across internal dashboards.",
+    "themeColor": "purple-pizzazz-500",
+    "tooling": {
+      "design": [
+        "Figma"
+      ],
+      "frontend": [
+        "Vue 3",
+        "Tailwind",
+        "Vite"
+      ],
+      "backend": [
+        "Laravel (PHP 8)",
+        "MySQL"
+      ],
+      "buildTools": [
+        "Git",
+        "NPM",
+        "Node",
+        "Composer",
+        "Docker"
+      ],
+      "testing": [
+        "PHPStan",
+        "PHPUnit",
+        "Laravel Dusk",
+        "Codesniffer",
+        "BrowserStack"
+      ],
+      "workflow": [
+        "GitTower",
+        "PHPStorm",
+        "Tinkerwell",
+        "Ray",
+        "TablePlus",
+        "Fish"
+      ]
+    }
+  },
+  {
+    "slug": "tax-estimates",
+    "title": "Tax Estimates @ ComplYant",
+    "hook": "How we empowered small business owners to prepare for tax season\u2014automatically.",
+    "resumeSummary": "Co-developed ComplYant\u2019s tax estimate feature by designing the Plaid domain. Built a vendor-agnostic API integration layer with clear service boundaries, fluent APIs, and event-driven flows.",
+    "tldr": "I co-developed the Plaid domain for ComplYant\u2019s tax estimate feature, crafting a vendor-agnostic integration layer with clear service boundaries, fluent APIs and event-driven flows. Working in tandem with the Hurdlr team, we delivered a seamless user experience that turned live transaction data into automated tax estimates.",
+    "challenge": "Build a system to turn real-time bank data into live tax estimates. Small business users needed proactive guidance to save and file on time.",
+    "task": "Ingest and interpret Plaid bank transaction data, translate it for Hurdlr, and return usable estimates\u2014all through a composable, testable system.",
+    "contribution": "Built Plaid OAuth & service API, defined schema maps, introduced Saloon, authored DTOs, wired webhook-driven events, and wrote comprehensive unit tests.",
+    "result": "We launched tax estimates and were building Schedule C support when the company shut down. The Plaid domain remains a clean, reusable architecture for future integrations.",
+    "themeColor": "purple-pizzazz-500",
+    "tooling": {
+      "design": [
+        "Miro"
+      ],
+      "frontend": [],
+      "backend": [
+        "Laravel (DDD architecture)",
+        "Plaid API",
+        "Hurdlr API"
+      ],
+      "buildTools": [
+        "Saloon",
+        "Spatie Laravel Data"
+      ],
+      "testing": [
+        "Pest"
+      ],
+      "workflow": [
+        "PHPStorm",
+        "Ray",
+        "Tinkerwell"
+      ]
+    }
+  }
+]
