@@ -10,8 +10,11 @@
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "typecheck": "tsc",
-    "seed": "npx tsx scripts/importCaseStudies.ts",
-    "migrate": "./scripts/build.sh"
+    "seed": "npx prisma generate && npx tsx scripts/importCaseStudies.ts",
+    "migrate": "./scripts/build.sh",
+    "clearCache": "rm -rf node_modules && rm -rf prisma/node_modules && npm i",
+    "inspect": "npx prisma studio",
+    "resetData": "npx prisma generate && npx prisma migrate reset --force"
   },
   "dependencies": {
     "@remix-run/node": "2.10.0",
@@ -26,7 +29,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@prisma/client": "^6.6.0",
+    "@prisma/client": "^6.7.0",
     "@remix-run/dev": "2.10.0",
     "@remix-run/eslint-config": "2.10.0",
     "@types/node": "^22.14.1",
@@ -34,9 +37,10 @@
     "@types/react-dom": "^18.2.7",
     "eslint": "^8.38.0",
     "prettier": "^3.5.3",
-    "prisma": "^6.6.0",
+    "prisma": "^6.7.0",
     "tailwindcss": "^4.0.9",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^5.1.0",
     "vite-tsconfig-paths": "^4.2.1"
