@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from "fs";
+import path from "path";
 
 interface ImageManifestItem {
   slug: string;
@@ -8,7 +8,7 @@ interface ImageManifestItem {
 }
 
 // const basePath = './public/images/case-studies';
-const basePath = './app/images/case-studies';
+const basePath = "./app/images/case-studies";
 
 function getImageData() {
   const slugs = fs.readdirSync(basePath).filter((dir) => {
@@ -26,13 +26,13 @@ function getImageData() {
 
     if (files.length === 0) return;
 
-    const cover = files.find((f) => f.includes('cover')) || files[0];
+    const cover = files.find((f) => f.includes("cover")) || files[0];
     const others = files.filter((f) => f !== cover);
 
     manifest.push({
       slug,
       coverImageUrl: `/images/case-studies/${slug}/${cover}`,
-      processImages: others.map((f) => `/images/case-studies/${slug}/${f}`)
+      processImages: others.map((f) => `/images/case-studies/${slug}/${f}`),
     });
   });
 
@@ -40,5 +40,5 @@ function getImageData() {
 }
 
 const output = getImageData();
-fs.writeFileSync('./app/data/image-manifest.json', JSON.stringify(output, null, 2));
-console.log('✅ Image manifest generated.');
+fs.writeFileSync("./app/data/image-manifest.json", JSON.stringify(output, null, 2));
+console.log("✅ Image manifest generated.");

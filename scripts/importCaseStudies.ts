@@ -1,9 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 import caseStudies from "../app/data/case-studies.json" assert { type: "json" };
 
 // Initialize Prisma Client
 const prisma = new PrismaClient({
-  log: ['query', 'info', 'warn', 'error'],
+  log: ["query", "info", "warn", "error"],
 });
 
 interface ToolingData {
@@ -103,7 +103,7 @@ async function run() {
       console.log(`✅ Synced: ${title}`);
     }
   } catch (error) {
-    console.error('Error during import:', error);
+    console.error("Error during import:", error);
     throw error;
   } finally {
     await prisma.$disconnect();
@@ -111,6 +111,6 @@ async function run() {
 }
 
 run().catch((err) => {
-  console.error('Fatal error:', err);
+  console.error("Fatal error:", err);
   process.exit(1);
 });

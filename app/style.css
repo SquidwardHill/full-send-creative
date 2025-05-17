@@ -64,3 +64,49 @@
   --color-purple-pizzazz-900: #7b1466;
   --color-purple-pizzazz-950: #530042;
 }
+
+.gradient-bubblegum {
+  background: var(--bubblegum-gradient, linear-gradient(92deg, #FF8FF1 0.05%, #FCDFED 100.05%));
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.7s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-4px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translateY(0);
+  }
+}
+
+.animate-sparkle {
+  animation: sparkle 0.8s ease-out forwards;
+  pointer-events: none;
+}

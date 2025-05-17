@@ -11,9 +11,7 @@
     "result": "Launched a high-impact feature in under 3 months. Twelve users filed directly from the platform before the IRS deadline, proving the value of internal tooling for tax automation.",
     "themeColor": "purple-pizzazz-500",
     "tooling": {
-      "design": [
-        "Figma"
-      ],
+      "design": ["Figma"],
       "frontend": [
         "Vue 3",
         "Inertia.js",
@@ -24,33 +22,10 @@
         "Filament Forms",
         "PostCSS"
       ],
-      "backend": [
-        "Laravel (PHP 8)",
-        "MySQL"
-      ],
-      "buildTools": [
-        "Git",
-        "NPM",
-        "Node",
-        "Composer",
-        "Docker (Laravel Sail)",
-        "Laravel Vapor"
-      ],
-      "testing": [
-        "PHPStan",
-        "PHPUnit",
-        "Laravel Dusk",
-        "Codesniffer",
-        "BrowserStack"
-      ],
-      "workflow": [
-        "GitTower",
-        "PHPStorm",
-        "Tinkerwell",
-        "Ray",
-        "TablePlus",
-        "Fish"
-      ]
+      "backend": ["Laravel (PHP 8)", "MySQL"],
+      "buildTools": ["Git", "NPM", "Node", "Composer", "Docker (Laravel Sail)", "Laravel Vapor"],
+      "testing": ["PHPStan", "PHPUnit", "Laravel Dusk", "Codesniffer", "BrowserStack"],
+      "workflow": ["GitTower", "PHPStorm", "Tinkerwell", "Ray", "TablePlus", "Fish"]
     }
   },
   {
@@ -65,40 +40,12 @@
     "result": "Successfully released a polished self-serve booking experience with strong user and stakeholder feedback. System is now core to the product and franchise model.",
     "themeColor": "purple-pizzazz-500",
     "tooling": {
-      "design": [
-        "Figma"
-      ],
-      "frontend": [
-        "Vue 3",
-        "Tailwind",
-        "Vite"
-      ],
-      "backend": [
-        "Laravel (PHP 8)",
-        "MySQL"
-      ],
-      "buildTools": [
-        "Git",
-        "NPM",
-        "Node",
-        "Composer",
-        "Docker"
-      ],
-      "testing": [
-        "PHPStan",
-        "PHPUnit",
-        "Laravel Dusk",
-        "Codesniffer",
-        "BrowserStack"
-      ],
-      "workflow": [
-        "GitTower",
-        "PHPStorm",
-        "Tinkerwell",
-        "Ray",
-        "TablePlus",
-        "Fish"
-      ]
+      "design": ["Figma"],
+      "frontend": ["Vue 3", "Tailwind", "Vite"],
+      "backend": ["Laravel (PHP 8)", "MySQL"],
+      "buildTools": ["Git", "NPM", "Node", "Composer", "Docker"],
+      "testing": ["PHPStan", "PHPUnit", "Laravel Dusk", "Codesniffer", "BrowserStack"],
+      "workflow": ["GitTower", "PHPStorm", "Tinkerwell", "Ray", "TablePlus", "Fish"]
     }
   },
   {
@@ -113,40 +60,12 @@
     "result": "Shipped a maintainable metrics system that stakeholders rely on daily. The service layer is now reused across internal dashboards.",
     "themeColor": "purple-pizzazz-500",
     "tooling": {
-      "design": [
-        "Figma"
-      ],
-      "frontend": [
-        "Vue 3",
-        "Tailwind",
-        "Vite"
-      ],
-      "backend": [
-        "Laravel (PHP 8)",
-        "MySQL"
-      ],
-      "buildTools": [
-        "Git",
-        "NPM",
-        "Node",
-        "Composer",
-        "Docker"
-      ],
-      "testing": [
-        "PHPStan",
-        "PHPUnit",
-        "Laravel Dusk",
-        "Codesniffer",
-        "BrowserStack"
-      ],
-      "workflow": [
-        "GitTower",
-        "PHPStorm",
-        "Tinkerwell",
-        "Ray",
-        "TablePlus",
-        "Fish"
-      ]
+      "design": ["Figma"],
+      "frontend": ["Vue 3", "Tailwind", "Vite"],
+      "backend": ["Laravel (PHP 8)", "MySQL"],
+      "buildTools": ["Git", "NPM", "Node", "Composer", "Docker"],
+      "testing": ["PHPStan", "PHPUnit", "Laravel Dusk", "Codesniffer", "BrowserStack"],
+      "workflow": ["GitTower", "PHPStorm", "Tinkerwell", "Ray", "TablePlus", "Fish"]
     }
   },
   {
@@ -161,27 +80,12 @@
     "result": "We launched tax estimates and were building Schedule C support when the company shut down. The Plaid domain remains a clean, reusable architecture for future integrations.",
     "themeColor": "purple-pizzazz-500",
     "tooling": {
-      "design": [
-        "Miro"
-      ],
+      "design": ["Miro"],
       "frontend": [],
-      "backend": [
-        "Laravel (DDD architecture)",
-        "Plaid API",
-        "Hurdlr API"
-      ],
-      "buildTools": [
-        "Saloon",
-        "Spatie Laravel Data"
-      ],
-      "testing": [
-        "Pest"
-      ],
-      "workflow": [
-        "PHPStorm",
-        "Ray",
-        "Tinkerwell"
-      ]
+      "backend": ["Laravel (DDD architecture)", "Plaid API", "Hurdlr API"],
+      "buildTools": ["Saloon", "Spatie Laravel Data"],
+      "testing": ["Pest"],
+      "workflow": ["PHPStorm", "Ray", "Tinkerwell"]
     }
   }
 ]

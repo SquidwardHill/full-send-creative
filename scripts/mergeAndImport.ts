@@ -5,7 +5,15 @@ import imageManifest from "../app/data/image-manifest.json" assert { type: "json
 const prisma = new PrismaClient();
 
 async function run() {
-  const imageMap = Object.fromEntries((imageManifest as unknown as Array<{ slug: string; coverImageUrl: string; processImages: string[] }>).map(item => [item.slug, item]));
+  const imageMap = Object.fromEntries(
+    (
+      imageManifest as unknown as Array<{
+        slug: string;
+        coverImageUrl: string;
+        processImages: string[];
+      }>
+    ).map((item) => [item.slug, item])
+  );
 
   for (const cs of caseStudyContent) {
     const imageData = imageMap[cs.slug] || {};

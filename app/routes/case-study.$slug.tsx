@@ -2,64 +2,65 @@
 
 import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import { PrismaClient } from "@prisma/client";
 import TitleTag from "~/components/titleTag";
 import ContentSection from "~/components/caseStudy/section";
-
-const prisma = new PrismaClient();
+import { coverPlaceholder } from "../images/Index.js";
+import { prisma } from "~/utils/db.server";
 
 export async function loader({ params }: LoaderFunctionArgs) {
-  const slug = params.slug;
-  if (!slug) throw new Response("Slug not found", { status: 404 });
+  try {
+    const slug = params.slug;
+    if (!slug) throw new Response("Slug not found", { status: 404 });
 
-  const caseStudy = await prisma.caseStudy.findUnique({
-    where: { slug },
-    // include: { tooling: true },
-  });
+    const caseStudy = await prisma.caseStudy.findUnique({
+      where: { slug },
+      // include: { tooling: true },
+    });
 
-  if (!caseStudy) {
-    throw new Response("Case study not found", { status: 404 });
+    if (!caseStudy) {
+      throw new Response("Case study not found", { status: 404 });
+    }
+
+    const related = await prisma.caseStudy.findMany({
+      where: { slug: { not: slug } },
+      select: { title: true, slug: true, hook: true },
+    });
+
+    return json({ caseStudy, related });
+  } catch (error) {
+    console.error("Error loading case study:", error);
+    throw new Response("Error loading case study", { status: 500 });
   }
-
-  const related = await prisma.caseStudy.findMany({
-    where: { slug: { not: slug } },
-    select: { title: true, slug: true, hook: true },
-  });  
-
-  return json({ caseStudy, related });
 }
 
 export default function CaseStudyPage() {
   const { caseStudy, related } = useLoaderData<typeof loader>();
 
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto max-w-screen-lg p-6">
       {/* Case Study Header */}
-      <div className="flex py-10">
-        <div className="flex-1/2">
-          <TitleTag 
-            text="Case Study"
-            color="text-transparent bg-clip-text from-purple-pizzazz-400 via-purple-pizzazz-300 from-purple-pizzazz-200"
-          />
-          <h1 className="text-4xl font-bold text-white mb-2">{caseStudy.hook}</h1>
+      <div className="flex flex-col md:flex-row py-10 gap-12">
+        <div className="flex-1/2 border-l-bubblegum-500 border-l-4 pl-8 ml-4 content-center">
+          <TitleTag text="Case Study" color="gradient-bubblegum" size="text-lg lg:text-xl" />
+          <h1 className="text-2xl lg:text-4xl font-bold text-white mb-4">{caseStudy.hook}</h1>
         </div>
         <div className="flex-1/2">
-            <img src={caseStudy.coverImageUrl} alt="Case Study Image" className="w-40 h-40 mb-6" />
+          <img
+            src={caseStudy.coverImageUrl ?? coverPlaceholder}
+            alt={`${caseStudy.title} Cover Image`}
+            className="object-cover"
+          />
         </div>
       </div>
 
       {/* TL;DR Section */}
-      <section className="my-10">
-        <h3 className="text-xl font-semibold ">TL;DR</h3>
-        <p className="mt-4">{caseStudy.tldr}</p>
+      <section className="my-10 ">
+        <TitleTag text="TL;DR" color="text-bubblegum-500 " />
+        <p className="text-xl mt-0 gradient-bubblegum">{caseStudy.tldr}</p>
       </section>
 
-
       {/* Challenge Section */}
-      <ContentSection
-            title="The Challenge"
-            body={caseStudy.challenge}
-          />
+      <ContentSection title="The Challenge" body={caseStudy.challenge} />
       <section className="my-10">
         <h3 className="text-md font-light text-cream-200">The Challenge</h3>
         <p className="mt-2 text-xl text-cream-100 text-normal">{caseStudy.challenge}</p>
@@ -76,10 +77,10 @@ export default function CaseStudyPage() {
         </div> */}
       </section>
 
-
       {/* Process Images Section */}
       <section className="py-8">
-        <h3 className="text-xl font-semibold text-[#FF7F50]">Process Images</h3>
+        <h3 className="text-xl font-semibold">Process Images</h3>
+
         <div className="flex overflow-x-auto space-x-4 py-8">
           {caseStudy.processImages.map((image, index) => (
             <div key={index}>
