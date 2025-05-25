@@ -1,88 +1,98 @@
-// app/routes/case-studies/$slug.tsx
-
-import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
-import TitleTag from "~/components/titleTag";
-import ContentSection from "~/components/caseStudy/section";
-import { coverPlaceholder } from "../images/Index.js";
-import { prisma } from "~/utils/db.server";
+import type { LoaderFunction } from "@remix-run/node";
+import TitleTag from "../components/titleTag.js";
+import ContentSection from "../components/caseStudy/section.js";
 
-export async function loader({ params }: LoaderFunctionArgs) {
-  try {
-    const slug = params.slug;
-    if (!slug) throw new Response("Slug not found", { status: 404 });
+// Placeholder image for case studies without a cover image
+const coverPlaceholder = "/images/placeholder.jpg";
 
-    const caseStudy = await prisma.caseStudy.findUnique({
-      where: { slug },
-      // include: { tooling: true },
-    });
-
-    if (!caseStudy) {
-      throw new Response("Case study not found", { status: 404 });
-    }
-
-    const related = await prisma.caseStudy.findMany({
-      where: { slug: { not: slug } },
-      select: { title: true, slug: true, hook: true },
-    });
-
-    return json({ caseStudy, related });
-  } catch (error) {
-    console.error("Error loading case study:", error);
-    throw new Response("Error loading case study", { status: 500 });
-  }
+interface CaseStudy {
+  title: string;
+  hook: string;
+  coverImage: string | null;
+  tldr: string;
+  challenge: string;
+  need: string;
+  contribution: string;
+  result: string;
+  processImages: string[];
 }
 
-export default function CaseStudyPage() {
+interface RelatedCaseStudy {
+  slug: string;
+  title: string;
+  hook: string;
+}
+
+export const loader: LoaderFunction = async ({ params }) => {
+  // TODO: Replace with actual data fetching
+  const caseStudy: CaseStudy = {
+    title: "Sample Case Study",
+    hook: "This is a sample case study",
+    coverImage: null,
+    tldr: "Sample TLDR",
+    challenge: "Sample challenge",
+    need: "Sample need",
+    contribution: "Sample contribution",
+    result: "Sample result",
+    processImages: [],
+  };
+
+  const related: RelatedCaseStudy[] = [];
+
+  return { caseStudy, related };
+};
+
+export default function CaseStudy() {
   const { caseStudy, related } = useLoaderData<typeof loader>();
 
   return (
-    <div className="container mx-auto max-w-screen-lg p-6">
+    <div className="container mx-auto max-w-screen-lg px-12 pt-4">
+      {/* Return Home Link */}
+      <div className="mb-4">
+        <Link
+          to="/"
+          className="text-sm text-pink-300 hover:text-pink-100 transition-colors underline underline-offset-4"
+        >
+          ← Back to Home
+        </Link>
+      </div>
+
       {/* Case Study Header */}
       <div className="flex flex-col md:flex-row py-10 gap-12">
-        <div className="flex-1/2 border-l-bubblegum-500 border-l-4 pl-8 ml-4 content-center">
-          <TitleTag text="Case Study" color="gradient-bubblegum" size="text-lg lg:text-xl" />
-          <h1 className="text-2xl lg:text-4xl font-bold text-white mb-4">{caseStudy.hook}</h1>
+        <div className="flex-7 content-center">
+          <TitleTag text="Case Study" color="gradient-bubblegum-white" />
+          <h1 className="text-2xl lg:text-4xl font-bold text-white mb-4 leading-[125%] tracking-wide">
+            {caseStudy.hook}
+          </h1>
         </div>
-        <div className="flex-1/2">
+        <div className="flex-5">
           <img
-            src={caseStudy.coverImageUrl ?? coverPlaceholder}
+            src={caseStudy.coverImage ?? coverPlaceholder}
             alt={`${caseStudy.title} Cover Image`}
             className="object-cover"
           />
         </div>
       </div>
 
-      {/* TL;DR Section */}
-      <section className="my-10 ">
-        <TitleTag text="TL;DR" color="text-bubblegum-500 " />
-        <p className="text-xl mt-0 gradient-bubblegum">{caseStudy.tldr}</p>
-      </section>
-
-      {/* Challenge Section */}
+      {/* TLDR + Body Sections */}
+      <ContentSection title="✨ TL;DR" body={caseStudy.tldr} />
       <ContentSection title="The Challenge" body={caseStudy.challenge} />
+      <ContentSection title="Product Need" body={caseStudy.need} />
+      <ContentSection title="My Contribution" body={caseStudy.contribution} />
+      <ContentSection title="Result" body={caseStudy.result} />
+
+      {/* Tech Stack Section (stubbed) */}
       <section className="my-10">
-        <h3 className="text-md font-light text-cream-200">The Challenge</h3>
-        <p className="mt-2 text-xl text-cream-100 text-normal">{caseStudy.challenge}</p>
+        <h3 className="text-md font-light text-cream-200">Tools & Tech Stack</h3>
+        <p className="mt-2 text-xl text-cream-100 text-normal">⚠️ Generate dynamically in grid</p>
       </section>
 
-      {/* Tech Stack Section */}
-      <section className="my-10">
-        <h3 className="text-xl font-semibold">Tools and Tech Stack</h3>
-        <p className="mt-4">⚠️ Generate dynamically in grid</p>
-        {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-6">
-          {caseStudy.tools.map((tool, index) => (
-            <div key={index} className="text-center text-gray-400">{tool}</div>
-          ))}
-        </div> */}
-      </section>
-
-      {/* Process Images Section */}
-      <section className="py-8">
-        <h3 className="text-xl font-semibold">Process Images</h3>
-
+      {/* Process Images */}
+      <section className="py-12">
+        <h3 className="text-md font-light text-cream-200">Process Images</h3>
         <div className="flex overflow-x-auto space-x-4 py-8">
-          {caseStudy.processImages.map((image, index) => (
+          {caseStudy.processImages.map((image: string, index: number) => (
             <div key={index}>
               <img src={image} alt={`Process ${index}`} className="h-48 w-auto rounded-md" />
             </div>
@@ -90,12 +100,26 @@ export default function CaseStudyPage() {
         </div>
       </section>
 
-      {/* Footer with Role and Timeline */}
-      <footer className="text-center py-6">
-        <div className="font-semibold text-white">Role: Frontend Developer</div>
-        <div className="text-gray-400">Team: Engineering</div>
-        <div className="text-gray-400">Timeline: 3 months</div>
-      </footer>
+      {/* Related Case Studies */}
+      {related.length > 0 && (
+        <section className="pt-12 border-t border-zinc-800 mt-20">
+          <h3 className="text-md font-light text-cream-200 mb-6">More from this realm...</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+            {related.map((item: RelatedCaseStudy) => (
+              <Link
+                key={item.slug}
+                to={`/case-studies/${item.slug}`}
+                className="group border border-zinc-800 rounded-lg p-6 transition hover:border-pink-400"
+              >
+                <h4 className="text-lg font-semibold text-white group-hover:text-pink-300">
+                  {item.title}
+                </h4>
+                <p className="mt-2 text-cream-200">{item.hook}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
