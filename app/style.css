@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Space Grotesk';
-  src: url('/fonts/SpaceGrotesk.ttf'), format('ttf');
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk.ttf"), format("ttf");
   font-weight: 100 1000;
   font-size: 8 200;
 }
 
 @font-face {
-  font-family: 'Starboy';
-  src: url('/fonts/STARBOY.otf'), format('otf');
+  font-family: "Starboy";
+  src: url("/fonts/STARBOY.otf"), format("otf");
   font-weight: 100 1000;
   font-size: 8 200;
 }
 
 :root {
-  --font-display: 'Space Grotesk', serif;
-  --font-serif: 'Space Grotesk', serif;
-  --font-sans: 'Starboy', sans-serif;
+  --font-display: "Space Grotesk", serif;
+  --font-serif: "Space Grotesk", serif;
+  --font-sans: "Starboy", sans-serif;
   --font-accent: "Starboy", "sans-serif";
   --color-cream-100: hsla(0, 38%, 90%, 1);
   --color-cream-200: hsla(0, 39%, 84%, 0.8);
@@ -41,9 +41,9 @@
 }
 
 @theme {
-  --font-display: 'Space Grotesk', serif;
-  --font-serif: 'Space Grotesk', serif;
-  --font-sans: 'Starboy', sans-serif;
+  --font-display: "Space Grotesk", serif;
+  --font-serif: "Space Grotesk", serif;
+  --font-sans: "Starboy", sans-serif;
   --font-accent: "Starboy", "sans-serif";
   --color-cream-100: hsla(0, 38%, 90%, 1);
   --color-cream-200: hsla(0, 39%, 84%, 0.8);
@@ -66,10 +66,17 @@
 }
 
 .gradient-bubblegum {
-  background: var(--bubblegum-gradient, linear-gradient(92deg, #FF8FF1 0.05%, #FCDFED 100.05%));
-background-clip: text;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
+  background: var(--bubblegum-gradient, linear-gradient(64deg, #ff77ed, #fcdfed));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bubblegum-white {
+  background: linear-gradient(70deg, #fc6fea 0.25%, #fff3f9 80%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 @keyframes fade-in {
