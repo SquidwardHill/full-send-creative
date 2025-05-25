@@ -2,6 +2,7 @@ import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/reac
 import { Analytics } from "@vercel/analytics/react";
 import type { LinksFunction } from "@remix-run/node";
 import Navbar from "~/components/navbar";
+import Footer from "~/components/footer";
 
 import "./style.css";
 
@@ -22,10 +23,11 @@ export default function App() {
         <Navbar />
         <main className="p-4 max-w-screen-xl mx-auto bg-color-galaxy">
           <Outlet />
-          <ScrollRestoration />
-          <Scripts />
-          <Analytics />
         </main>
+        <Footer />
+        <ScrollRestoration />
+        <Scripts />
+        <Analytics />
       </body>
     </html>
   );
