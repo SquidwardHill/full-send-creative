@@ -3,14 +3,21 @@ import { installGlobals } from "@remix-run/node";
 import { defineConfig } from "vite";
 import { vercelPreset } from "@vercel/remix/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from "@tailwindcss/vite";
 
 installGlobals();
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
-    remix({ presets: [vercelPreset()] }), 
-    tsconfigPaths()
+    remix({
+      presets: [vercelPreset()],
+      // Enable HMR
+      future: {
+        //v3_fetcherPersist: true,
+        v3_relativeSplatPath: true,
+      },
+    }),
+    tsconfigPaths(),
   ],
 });
