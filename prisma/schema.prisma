@@ -24,27 +24,61 @@ model CaseStudy {
   task         String
   contribution String
   result       String
+  themeColor   String @default("purple-pizzazz-500")
 
-  coverImageUrl String?
-  processImages String[] @default([])
-  themeColor    String   @default("purple-pizzazz-500")
-
-  tooling Tooling?
+  tools  ProcessTool[]
+  images Image[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model Tooling {
+model ProcessTool {
   id          String    @id @default(cuid())
   caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id])
-  caseStudyId String    @unique
+  caseStudyId String
 
-  planning String[] @default([])
-  design   String[] @default([])
-  frontend String[] @default([])
-  backend  String[] @default([])
-  build    String[] @default([])
-  testing  String[] @default([])
-  workflow String[] @default([])
+  tool   Tool     @relation(fields: [toolId], references: [id])
+  toolId String
+  role   ToolRole
+}
+
+model Tool {
+  id          String        @id @default(cuid())
+  name        String        @unique
+  icon        String? // optional Iconify-compatible identifier
+  website     String? // optional external link
+  ProcessTool ProcessTool[]
+}
+
+enum ToolRole {
+  PLANNING
+  DESIGN
+  FRONTEND
+  BACKEND
+  BUILD
+  TESTING
+  WORKFLOW
+}
+
+model Image {
+  id          String    @id @default(cuid())
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id])
+  caseStudyId String
+  type        ImageType
+
+  url         String
+  alt         String?
+  description String?
+  tags        String[]  @default([])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([caseStudyId, type])
+}
+
+enum ImageType {
+  COVER
+  PROCESS
 }
