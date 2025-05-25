@@ -3,7 +3,7 @@ import { Link } from "@remix-run/react";
 import { useHydrated } from "~/utils/hooks";
 
 export default function Footer() {
-  const isHydrated = useHydrated();
+  // const isHydrated = useHydrated();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -26,7 +26,8 @@ export default function Footer() {
               <h1 className="text-3xl font-bold text-bubblegum-500">✨</h1>
             </Link>
             <p className="text-sm mt-2">
-              © {isHydrated ? currentYear : "2024"} Sydney Hill. All rights reserved.
+              © {currentYear} Sydney Hill. All rights reserved.
+              {/* © {isHydrated ? currentYear : "2024"} Sydney Hill. All rights reserved. */}
             </p>
           </div>
 
