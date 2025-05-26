@@ -14,14 +14,17 @@
     "migrate": "./scripts/build.sh",
     "clearCache": "rm -rf node_modules && rm -rf prisma/node_modules && npm i",
     "inspect": "npx prisma studio",
-    "resetData": "npx prisma generate && npx prisma migrate reset --force",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "dev:reset": "npx prisma generate && npx prisma migrate reset --force",
+    "dev:css": "npx @tailwindcss/cli -i ./app/assets/styles/index.css -o ./app/assets/styles/compiled.css --watch",
+    "dev:full": "concurrently \"npm run dev:css\" \"npm run dev\""
   },
   "dependencies": {
     "@iconify/react": "^6.0.0",
     "@remix-run/node": "2.10.0",
     "@remix-run/react": "2.10.0",
     "@remix-run/server-runtime": "2.10.0",
+    "@tailwindcss/cli": "^4.1.7",
     "@tailwindcss/vite": "^4.1.7",
     "@vercel/analytics": "^1.2.2",
     "@vercel/remix": "2.10.0",
@@ -38,6 +41,7 @@
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prisma": "^6.7.0",
