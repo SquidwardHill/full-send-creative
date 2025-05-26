@@ -1,14 +1,9 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
-import type { LinksFunction } from "@remix-run/node";
+import "~/assets/styles/index.css";
+import { Link } from "@remix-run/react";
 import Navbar from "~/components/navbar";
 import Footer from "~/components/footer";
-
-import "./style.css";
-
-export const links: LinksFunction = () => {
-  return [];
-};
 
 export default function App() {
   return (
@@ -17,14 +12,17 @@ export default function App() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <Link to="~/assets/styles/compiled.css" rel="stylesheet" />
         <Links />
       </head>
-      <body className="bg-color-galaxy bg-galaxy font-serif text-cream-200 dark:bg-galaxy dark:text-cream-200">
-        <Navbar />
-        <main className="p-4 max-w-screen-xl mx-auto bg-color-galaxy">
-          <Outlet />
+      <body>
+        <main className="bg-galaxy font-serif text-cream-200 dark:bg-galaxy dark:text-cream-200">
+          <Navbar />
+          <div className="p-4 max-w-screen-xl mx-auto">
+            <Outlet />
+          </div>
+          <Footer />
         </main>
-        <Footer />
         <ScrollRestoration />
         <Scripts />
         <Analytics />

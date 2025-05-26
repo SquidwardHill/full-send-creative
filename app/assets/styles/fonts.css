@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/fonts/SpaceGrotesk.ttf") format("truetype");
+  font-weight: 100 1000;
+}
+
+@font-face {
+  font-family: "Starboy";
+  src: url("/fonts/STARBOY.otf") format("opentype");
+  font-weight: 100 1000;
+}

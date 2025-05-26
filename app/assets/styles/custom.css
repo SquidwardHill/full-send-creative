@@ -1,0 +1,11 @@
+/* Use :root vars only for things that Tailwind doesn’t handle well (like clip paths, SVG filters, complex gradients, or runtime changes */
+:root {
+  --bubblegum-gradient: linear-gradient(64deg, #ff77ed, #fcdfed);
+}
+
+.gradient-bubblegum {
+  background: var(--bubblegum-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
