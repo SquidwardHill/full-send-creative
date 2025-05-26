@@ -3,7 +3,7 @@ import path from "path";
 
 interface ImageManifestItem {
   slug: string;
-  coverImageUrl: string;
+  coverImage: string;
   processImages: string[];
 }
 
@@ -31,7 +31,7 @@ function getImageData() {
 
     manifest.push({
       slug,
-      coverImageUrl: `/images/case-studies/${slug}/${cover}`,
+      coverImage: `/images/case-studies/${slug}/${cover}`,
       processImages: others.map((f) => `/images/case-studies/${slug}/${f}`),
     });
   });
