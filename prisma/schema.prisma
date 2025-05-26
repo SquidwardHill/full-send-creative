@@ -26,32 +26,33 @@ model CaseStudy {
   result       String
   themeColor   String @default("purple-pizzazz-500")
 
-  tools  ProcessTool[]
+  skills        CaseStudySkill[]
   images Image[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-model ProcessTool {
-  id          String    @id @default(cuid())
-  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id])
-  caseStudyId String
+model CaseStudySkill {
+  id           String      @id @default(cuid())
+  caseStudy    CaseStudy   @relation(fields: [caseStudyId], references: [id])
+  caseStudyId  String
 
-  tool   Tool     @relation(fields: [toolId], references: [id])
-  toolId String
-  role   ToolRole
+  tool         Tool        @relation(fields: [toolId], references: [id])
+  toolId       String
+
+  area         SkillArea
 }
 
 model Tool {
-  id          String        @id @default(cuid())
-  name        String        @unique
-  icon        String? // optional Iconify-compatible identifier
-  website     String? // optional external link
-  ProcessTool ProcessTool[]
+  id             String            @id @default(cuid())
+  name           String            @unique
+  icon           String?           // optional Iconify-compatible identifier
+  website        String?           // optional external link
+  usedInSkills   CaseStudySkill[]  // renamed relation field for clarity
 }
 
-enum ToolRole {
+enum SkillArea {
   PLANNING
   DESIGN
   FRONTEND
