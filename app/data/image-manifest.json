@@ -1,22 +1,22 @@
 [
   {
     "slug": "automated-extension-filing-4868",
-    "coverImageUrl": "/images/case-studies/automated-extension-filing-4868/cover.png",
+    "coverImage": "/images/case-studies/automated-extension-filing-4868/cover.png",
     "processImages": []
   },
   {
     "slug": "in-app-reservations",
-    "coverImageUrl": "/images/case-studies/in-app-reservations/cover.png",
+    "coverImage": "/images/case-studies/in-app-reservations/cover.png",
     "processImages": []
   },
   {
     "slug": "metrics-reporting-dashboard",
-    "coverImageUrl": "/images/case-studies/metrics-reporting-dashboard/cover.png",
+    "coverImage": "/images/case-studies/metrics-reporting-dashboard/cover.png",
     "processImages": []
   },
   {
     "slug": "tax-estimates",
-    "coverImageUrl": "/images/case-studies/tax-estimates/cover.png",
+    "coverImage": "/images/case-studies/tax-estimates/cover.png",
     "processImages": []
   }
 ]
