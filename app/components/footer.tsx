@@ -1,9 +1,7 @@
 import { Icon } from "@iconify/react";
 import { Link } from "@remix-run/react";
-import { useHydrated } from "~/utils/hooks";
 
 export default function Footer() {
-  // const isHydrated = useHydrated();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
