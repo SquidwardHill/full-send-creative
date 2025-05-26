@@ -1,14 +1,9 @@
 import type { MetaFunction } from "@vercel/remix";
-import {
-  divider,
-  handsDivider,
-  sparkle,
-  statService,
-  courtReso,
-  complyantPlaidIntegration,
-  complyantIrs4868,
-} from "../images/Index";
+import { divider, sparkle } from "~/utils/images";
 import SkillCarousel from "~/components/SkillCarousel.js";
+import { json, LoaderFunctionArgs } from "@remix-run/node";
+import { useLoaderData, Link } from "@remix-run/react";
+import { prisma } from "~/utils/db.server.js";
 
 export const meta: MetaFunction = () => {
   return [
@@ -17,7 +12,23 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export async function loader({}: LoaderFunctionArgs) {
+  const caseStudies = await prisma.caseStudy.findMany({
+    orderBy: { createdAt: "desc" },
+    include: {
+      images: {
+        where: { type: "COVER" },
+        take: 1,
+      },
+    },
+  });
+
+  return json({ caseStudies });
+}
+
 export default function Index() {
+  const { caseStudies } = useLoaderData<typeof loader>();
+
   return (
     <div>
       {/* Hero Section */}
@@ -54,31 +65,42 @@ export default function Index() {
         </p>
       </section>
 
-      <section className="flex flex-wrap max-w-screen-lg mx-auto">
-        <a
-          className="flex w-1/2 text-decoration-none border-none"
-          href={`/case-study/in-app-reservations`}
-        >
-          <img src={statService} alt="Stat Service" className="w-full" />
-        </a>
-        <a
-          className="flex w-1/2 text-decoration-none border-none"
-          href={`/case-study/in-app-reservations`}
-        >
-          <img src={courtReso} alt="Court Reservation Feature" className="w-full" />
-        </a>
-        <a
-          className="flex w-1/2 text-decoration-none border-none"
-          href={`/case-study/in-app-reservations`}
-        >
-          <img src={complyantIrs4868} alt="IRS 4868 Extension Filing Feature" className="w-full" />
-        </a>
-        <a
-          className="flex w-1/2 text-decoration-none border-none"
-          href={`/case-study/in-app-reservations`}
-        >
-          <img src={complyantPlaidIntegration} alt="Plaid Integration" className="w-full" />
-        </a>
+      <section className="flex flex-wrap -mx-2">
+        {caseStudies.map(
+          (cs: {
+            id: string;
+            images: Array<{ url: string; alt?: string | null }>;
+            title: string;
+            hook: string;
+            slug: string;
+          }) => {
+            const cover = cs.images[0];
+            if (!cover) return null;
+
+            return (
+              <Link
+                key={cs.id}
+                to={`/case-study/${cs.slug}`}
+                className="group relative w-full sm:w-1/2 p-2 overflow-hidden cursor-pointer"
+              >
+                <img
+                  src={cover.url}
+                  alt={cover.alt ?? cs.title}
+                  className="w-full object-cover rounded-lg transition-transform duration-300 "
+                />
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out flex items-center justify-center rounded-lg">
+                  <div className="text-center text-white px-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out rounded-lg">
+                    <div className="max-w-3/4 mx-auto py-8">
+                      <h2 className="text-3xl font-semibold">{cs.title}</h2>
+                      <p className="text-xl mt-4">{cs.hook}</p>
+                      <p className="mt-8 text-xs italic opacity-70">Click to view</p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            );
+          }
+        )}
       </section>
 
       <section className="px-4 py-32 text-center max-w-screen-xl mx-auto">

@@ -1,4 +1,4 @@
-import { spookyHand, aboutPicture } from "../images/Index";
+import { spookyHand, aboutPicture } from "~/utils/images";
 
 export default function About() {
   return (
