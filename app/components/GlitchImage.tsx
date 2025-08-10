@@ -1,0 +1,65 @@
+import { useEffect, useRef, useState } from "react";
+
+interface GlitchImageProps {
+  srcTop: string;
+  srcBottom: string;
+  alt?: string;
+  className?: string; // optional: lets you control image sizing/responsiveness
+}
+
+export function GlitchImage({ srcTop, srcBottom, alt = "", className = "" }: GlitchImageProps) {
+  const [glitchActive, setGlitchActive] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const startGlitchLoop = () => {
+      intervalRef.current = setInterval(
+        () => {
+          setGlitchActive(true);
+          timeoutRef.current = setTimeout(
+            () => {
+              setGlitchActive(false);
+            },
+            Math.random() * 100 + 100
+          ); // glitch duration
+        },
+        Math.random() * 1200 + 800
+      ); // glitch interval
+    };
+
+    startGlitchLoop();
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  return (
+    <div className="relative inline-block overflow-hidden">
+      {/* Base layer */}
+      {/* <img src={src} alt={alt} className={`relative z-10 ${className}`} /> */}
+
+      {/* Red-shifted glitch layer */}
+      <img
+        src={srcTop}
+        alt=""
+        aria-hidden
+        className={`absolute top-1 left-1 z-1 pointer-events-none opacity-0 transition-transform duration-75 ease-linear ${
+          glitchActive ? "opacity-60 glitch-red" : ""
+        } ${className}`}
+      />
+
+      {/* Blue-shifted glitch layer */}
+      <img
+        src={srcBottom}
+        alt=""
+        aria-hidden
+        className={`absolute top-0 left-0 z-0 pointer-events-none opacity-0 transition-transform duration-75 ease-linear ${
+          glitchActive ? "opacity-60 glitch-blue" : ""
+        } ${className}`}
+      />
+    </div>
+  );
+}

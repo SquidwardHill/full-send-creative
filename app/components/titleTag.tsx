@@ -4,7 +4,13 @@ interface TitleTagProps {
   size?: string;
 }
 
-const TitleTag = ({ text, color = "text-cream-200", size = "text-[30px]" }: TitleTagProps) => (
-  <p className={`font-sans ${size} tracking-[3.5px] ${color} pb-4`}>{text}</p>
+const TitleTag = ({
+  text,
+  color = "text-cream-200",
+  size = "text-sm lg:text-md",
+}: TitleTagProps) => (
+  <p className={`font-mono uppercase italic font-bold ${size} tracking-wide ${color} pb-4`}>
+    {text}
+  </p>
 );
 export default TitleTag;

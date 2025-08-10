@@ -7,8 +7,7 @@ interface ImageManifestItem {
   processImages: string[];
 }
 
-// const basePath = './public/images/case-studies';
-const basePath = "./app/images/case-studies";
+const basePath = "./public/images/case-studies";
 
 function getImageData() {
   const slugs = fs.readdirSync(basePath).filter((dir) => {

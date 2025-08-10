@@ -7,6 +7,7 @@
   --font-serif: "Space Grotesk", serif;
   --font-sans: "Starboy", sans-serif;
   --font-accent: "Starboy", "sans-serif";
+  --font-mono: "Red Hat Mono", monospace;
 
   --color-cream-100: hsla(0, 38%, 90%, 1);
   --color-cream-200: hsla(0, 39%, 84%, 0.8);

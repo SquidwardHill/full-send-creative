@@ -1,10 +1,19 @@
 import { Link, useLoaderData } from "@remix-run/react";
-import type { LoaderFunction } from "@remix-run/node";
-import TitleTag from "../components/titleTag.js";
-import ContentSection from "../components/caseStudy/section.js";
+import type { LoaderFunctionArgs } from "@remix-run/node";
+import TitleTag from "../components/TitleTag.js";
+import CaseStudySection from "../components/case-study/Section.js";
+import SkillStackSection from "../components/case-study/SkillStackSection.js";
+import type { SkillArea, Tool } from "@prisma/client";
+import { json } from "@remix-run/node";
+import { prisma } from "~/utils/db.server.js";
 
 // Placeholder image for case studies without a cover image
-const coverPlaceholder = "/images/placeholder.jpg";
+const coverPlaceholder = "/images/cover-placeholder.jpg";
+
+interface CaseStudySkill {
+  area: SkillArea;
+  tool: Tool;
+}
 
 interface CaseStudy {
   title: string;
@@ -16,6 +25,7 @@ interface CaseStudy {
   contribution: string;
   result: string;
   processImages: string[];
+  skills: CaseStudySkill[];
 }
 
 interface RelatedCaseStudy {
@@ -24,23 +34,70 @@ interface RelatedCaseStudy {
   hook: string;
 }
 
-export const loader: LoaderFunction = async ({ params }) => {
-  // TODO: Replace with actual data fetching
-  const caseStudy: CaseStudy = {
-    title: "Sample Case Study",
-    hook: "This is a sample case study",
-    coverImage: null,
-    tldr: "Sample TLDR",
-    challenge: "Sample challenge",
-    need: "Sample need",
-    contribution: "Sample contribution",
-    result: "Sample result",
-    processImages: [],
-  };
+function groupSkillsByArea(skills: CaseStudySkill[]) {
+  return skills.reduce(
+    (acc, skill) => {
+      if (!acc[skill.area]) {
+        acc[skill.area] = [];
+      }
+      acc[skill.area].push(skill.tool);
+      return acc;
+    },
+    {} as Record<SkillArea, Tool[]>
+  );
+}
 
-  const related: RelatedCaseStudy[] = [];
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+  const { slug } = params;
 
-  return { caseStudy, related };
+  if (!slug) {
+    throw new Response("Missing slug", { status: 400 });
+  }
+
+  const caseStudy = await prisma.caseStudy.findUnique({
+    where: { slug },
+    include: {
+      images: true,
+      skills: {
+        include: {
+          tool: true,
+        },
+      },
+    },
+  });
+
+  if (!caseStudy) {
+    throw new Response("Case study not found", { status: 404 });
+  }
+
+  // extract cover + process images
+  const coverImage =
+    caseStudy.images.find((img: { type: string }) => img.type === "COVER")?.url ?? null;
+  const processImages = caseStudy.images
+    .filter((img: { type: string }) => img.type === "PROCESS")
+    .map((img: { url: string }) => img.url);
+
+  // fetch 2 "related" case studies (placeholder logic)
+  const related = await prisma.caseStudy.findMany({
+    where: {
+      slug: { not: slug },
+    },
+    take: 2,
+    select: {
+      slug: true,
+      title: true,
+      hook: true,
+    },
+  });
+
+  return json({
+    caseStudy: {
+      ...caseStudy,
+      coverImage,
+      processImages,
+    },
+    related,
+  });
 };
 
 export default function CaseStudy() {
@@ -54,39 +111,39 @@ export default function CaseStudy() {
           to="/"
           className="text-sm text-pink-300 hover:text-pink-100 transition-colors underline underline-offset-4"
         >
-          ← Back to Home
+          ← Back Home
         </Link>
       </div>
 
       {/* Case Study Header */}
-      <div className="flex flex-col md:flex-row py-10 gap-12">
-        <div className="flex-7 content-center">
-          <TitleTag text="Case Study" color="gradient-bubblegum-white" />
-          <h1 className="text-2xl lg:text-4xl font-bold text-white mb-4 leading-[125%] tracking-wide">
-            {caseStudy.hook}
-          </h1>
+      <div className="border-b-2 border-bubblegum-400">
+        <div className="flex flex-col md:flex-row py-10 gap-12 ">
+          <div className="flex-5">
+            <img
+              src={caseStudy.coverImage ?? coverPlaceholder}
+              alt={`${caseStudy.title} Cover Image`}
+              className="object-cover"
+            />
+          </div>
+          <div className="flex-7 content-center">
+            <TitleTag text="Case Study" color="gradient-bubblegum-white" />
+            <h1 className="text-2xl lg:text-4xl font-bold text-white mb-4 leading-[125%] tracking-wide">
+              {caseStudy.hook}
+            </h1>
+          </div>
         </div>
-        <div className="flex-5">
-          <img
-            src={caseStudy.coverImage ?? coverPlaceholder}
-            alt={`${caseStudy.title} Cover Image`}
-            className="object-cover"
-          />
-        </div>
+        <CaseStudySection title="TL;DR" body={caseStudy.tldr} />
       </div>
 
       {/* TLDR + Body Sections */}
-      <ContentSection title="✨ TL;DR" body={caseStudy.tldr} />
-      <ContentSection title="The Challenge" body={caseStudy.challenge} />
-      <ContentSection title="Product Need" body={caseStudy.need} />
-      <ContentSection title="My Contribution" body={caseStudy.contribution} />
-      <ContentSection title="Result" body={caseStudy.result} />
+
+      <CaseStudySection title="The Challenge" body={caseStudy.challenge} />
+      <CaseStudySection title="Product Need" body={caseStudy.need} />
+      <CaseStudySection title="My Contribution" body={caseStudy.contribution} />
+      <CaseStudySection title="Result" body={caseStudy.result} />
 
       {/* Tech Stack Section (stubbed) */}
-      <section className="my-10">
-        <h3 className="text-md font-light text-cream-200">Tools & Tech Stack</h3>
-        <p className="mt-2 text-xl text-cream-100 text-normal">⚠️ Generate dynamically in grid</p>
-      </section>
+      <SkillStackSection skills={caseStudy.skills} />
 
       {/* Process Images */}
       <section className="py-12">

@@ -1,5 +1,5 @@
 import { PrismaClient, SkillArea, ImageType } from "@prisma/client";
-import caseStudies from "../app/data/case-studies.json" assert { type: "json"";
+import caseStudies from "../app/data/case-studies.json" assert { type: "json"};
 
 // Initialize Prisma Client
 const prisma = new PrismaClient({

@@ -33,6 +33,8 @@ model CaseStudy {
   updatedAt DateTime @updatedAt
 }
 
+
+//Each Case Study has many Skills, each representing a Tool used in a specific SkillArea.
 model CaseStudySkill {
   id           String      @id @default(cuid())
   caseStudy    CaseStudy   @relation(fields: [caseStudyId], references: [id])
@@ -47,9 +49,9 @@ model CaseStudySkill {
 model Tool {
   id             String            @id @default(cuid())
   name           String            @unique
-  icon           String?           // optional Iconify-compatible identifier
-  website        String?           // optional external link
-  usedInSkills   CaseStudySkill[]  // renamed relation field for clarity
+  icon           String?          
+  website        String?          
+  usedInSkills   CaseStudySkill[]  
 }
 
 enum SkillArea {

@@ -67,7 +67,7 @@ export default function SkillCarousel() {
 
   return (
     <div className="w-full text-center px-12 mt-6">
-      <div className="flex flex-wrap lg:flex-nowrap justify-center gap-6 lg-gap-0 lg:justify-between ">
+      <div className="flex flex-wrap lg:flex-nowrap justify-center gap-6 lg-gap-0 lg:justify-between font-mono">
         {visibleSkills.map((skill, idx) => {
           const overrideIcon = iconOverrides[skill.icon];
           const icon = overrideIcon || skill.icon || fallbackIcon;

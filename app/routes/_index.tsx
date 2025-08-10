@@ -1,9 +1,10 @@
 import type { MetaFunction } from "@vercel/remix";
-import { divider, sparkle } from "~/utils/images";
+import { divider, sparkle, hand, catRed, catBlue } from "~/utils/images.js";
 import SkillCarousel from "~/components/SkillCarousel.js";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
 import { prisma } from "~/utils/db.server.js";
+import { GlitchImage } from "~/components/GlitchImage.js";
 
 export const meta: MetaFunction = () => {
   return [
@@ -33,7 +34,13 @@ export default function Index() {
     <div>
       {/* Hero Section */}
       <section className="px-4 pt-16 text-center max-w-screen-md mx-auto">
-        <p className="font-sans text-2xl tracking-[4px] text-cream-200 pb-4">
+        <GlitchImage
+          srcTop={catRed}
+          srcBottom={catBlue}
+          alt="demon kitty"
+          className="w-32 h-32 mx-auto"
+        />
+        <p className="font-serif text-2xl tracking-[4px] text-cream-200 pb-4">
           Alchemist Archive, Duality Potion
         </p>
         <h1 className="text-cream-100 text-5xl font-bold leading-tight">
@@ -41,17 +48,11 @@ export default function Index() {
         </h1>
       </section>
 
-      {/* Divider */}
-      <div className="p-4 m-4 max-w-screen-lg mx-auto">
-        {" "}
-        <img src={divider} alt="divider" className="w-full" />
-      </div>
-
       {/* About Section */}
       <section className="px-8 px-md-16 pt-0 text-center max-w-screen-lg mx-auto">
         <p className="text-cream-200 text-2xl font-normal tracking-normal pb-6 leading-relaxed">
-          I'm a designer and full-stack developer who blends creativity, logic, and intuition to
-          build thoughtful digital experiences. My magic lies in distilling ideas into clear, usable
+          Designer and full-stack developer who blends creativity, logic, and intuition to build
+          thoughtful digital experiences. My magic lies in distilling ideas into clear, usable
           systems—whether designing scalable UI patterns or developing the infrastructure beneath
           them. Explore my work to see how ideas take shape.
         </p>

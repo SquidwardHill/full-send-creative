@@ -24,7 +24,7 @@ interface CaseStudyData {
   contribution: string;
   result: string;
   themeColor?: string;
-  tooling?: ToolingData;
+  skills?: ToolingData;
 }
 
 async function run() {
@@ -50,11 +50,11 @@ async function run() {
       contribution,
       result,
       themeColor,
-      tooling,
+      skills,
     } = cs;
 
     const imageData = imageMap[slug] || {};
-    const coverImage = imageData.coverImage ?? `/images/case-studies/${slug}/cover.png`;
+    const coverImage = imageData.coverImage ?? `/public/images/${slug}/cover.png`;
     const processImages = imageData.processImages ?? [];
 
     // Upsert the case study
@@ -131,14 +131,15 @@ async function run() {
     });
 
     // Recreate skills from tooling
-    if (tooling) {
+    if (skills) {
+      console.log("🔍 Skills data:", skills);
       const skillGroups: [SkillArea, string[]][] = [
-        [SkillArea.DESIGN, tooling.design],
-        [SkillArea.FRONTEND, tooling.frontend],
-        [SkillArea.BACKEND, tooling.backend],
-        [SkillArea.BUILD, tooling.buildTools ?? []],
-        [SkillArea.TESTING, tooling.testing],
-        [SkillArea.WORKFLOW, tooling.workflow],
+        [SkillArea.DESIGN, skills.design],
+        [SkillArea.FRONTEND, skills.frontend],
+        [SkillArea.BACKEND, skills.backend],
+        [SkillArea.BUILD, skills.buildTools ?? []],
+        [SkillArea.TESTING, skills.testing],
+        [SkillArea.WORKFLOW, skills.workflow],
       ];
 
       for (const [area, tools] of skillGroups) {

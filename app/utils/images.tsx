@@ -4,5 +4,20 @@ import sparkle from "~/assets/images/sparkle.png";
 import spookyHand from "~/assets/images/spooky-hand.png";
 import aboutPicture from "~/assets/images/sh.png";
 import coverPlaceholder from "~/assets/images/cover-placeholder.png";
+import hand from "~/assets/images/hand.png";
+import heroBgGradient from "~/assets/images/hero-bg-gradient.png";
+import catRed from "~/assets/images/cat-red.png";
+import catBlue from "~/assets/images/cat-blue.png";
 
-export { divider, handsDivider, sparkle, spookyHand, aboutPicture, coverPlaceholder };
+export {
+  divider,
+  handsDivider,
+  sparkle,
+  spookyHand,
+  aboutPicture,
+  coverPlaceholder,
+  hand,
+  heroBgGradient,
+  catRed,
+  catBlue,
+};
