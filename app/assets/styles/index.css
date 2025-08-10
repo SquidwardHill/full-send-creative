@@ -3,11 +3,11 @@
 @import "./custom.css";
 
 @theme {
-  --font-display: "Space Grotesk", serif;
-  --font-serif: "Space Grotesk", serif;
-  --font-sans: "Starboy", sans-serif;
-  --font-accent: "Starboy", "sans-serif";
-  --font-mono: "Red Hat Mono", monospace;
+  --font-display: "Rowdies", serif;
+  --font-serif: "Google Sans Mono", serif;
+  --font-sans: "Rowdies", sans-serif;
+  --font-accent: "Rowdies", sans-serif;
+  --font-mono: "Google Sans Mono", monospace;
 
   --color-cream-100: hsla(0, 38%, 90%, 1);
   --color-cream-200: hsla(0, 39%, 84%, 0.8);
