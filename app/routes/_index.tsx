@@ -34,15 +34,8 @@ export default function Index() {
     <div>
       {/* Hero Section */}
       <section className="px-4 pt-16 text-center max-w-screen-md mx-auto">
-        <GlitchImage
-          srcTop={catRed}
-          srcBottom={catBlue}
-          alt="demon kitty"
-          className="w-32 h-32 mx-auto"
-        />
-        <p className="font-serif text-2xl tracking-[4px] text-cream-200 pb-4">
-          Alchemist Archive, Duality Potion
-        </p>
+        <GlitchImage srcTop={catRed} srcBottom={catBlue} alt="demon kitty" />
+
         <h1 className="text-cream-100 text-5xl font-bold leading-tight">
           I distill complex ideas into functional, aesthetic systems.
         </h1>

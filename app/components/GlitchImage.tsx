@@ -37,7 +37,7 @@ export function GlitchImage({ srcTop, srcBottom, alt = "", className = "" }: Gli
   }, []);
 
   return (
-    <div className="relative inline-block overflow-hidden">
+    <div className="relative inline-block overflow-hidden w-52 h-52">
       {/* Base layer */}
       {/* <img src={src} alt={alt} className={`relative z-10 ${className}`} /> */}
 
@@ -46,9 +46,7 @@ export function GlitchImage({ srcTop, srcBottom, alt = "", className = "" }: Gli
         src={srcTop}
         alt=""
         aria-hidden
-        className={`absolute top-1 left-1 z-1 pointer-events-none opacity-0 transition-transform duration-75 ease-linear ${
-          glitchActive ? "opacity-60 glitch-red" : ""
-        } ${className}`}
+        className="absolute top-1 left-1 z-1 glitch-1 w-full h-full"
       />
 
       {/* Blue-shifted glitch layer */}
@@ -56,9 +54,7 @@ export function GlitchImage({ srcTop, srcBottom, alt = "", className = "" }: Gli
         src={srcBottom}
         alt=""
         aria-hidden
-        className={`absolute top-0 left-0 z-0 pointer-events-none opacity-0 transition-transform duration-75 ease-linear ${
-          glitchActive ? "opacity-60 glitch-blue" : ""
-        } ${className}`}
+        className="absolute top-0 left-0 z-0 glitch-2 w-full h-full"
       />
     </div>
   );
