@@ -1,0 +1,142 @@
+[
+  {
+    "id": "figma",
+    "name": "FIGMA",
+    "icon": "figma",
+    "category": "design",
+    "description": "Design and prototyping tool"
+  },
+  {
+    "id": "tailwind",
+    "name": "TAILWIND",
+    "icon": "tailwind",
+    "category": "css",
+    "description": "Utility-first CSS framework"
+  },
+  {
+    "id": "laravel",
+    "name": "LARAVEL",
+    "icon": "laravel",
+    "category": "backend",
+    "description": "PHP web application framework"
+  },
+  {
+    "id": "livewire",
+    "name": "LIVEWIRE",
+    "icon": "livewire",
+    "category": "backend",
+    "description": "Full-stack framework for Laravel"
+  },
+  {
+    "id": "react",
+    "name": "REACT",
+    "icon": "react",
+    "category": "frontend",
+    "description": "JavaScript library for building user interfaces"
+  },
+  {
+    "id": "phpstorm",
+    "name": "PHPSTORM",
+    "icon": "phpstorm",
+    "category": "tools",
+    "description": "PHP IDE"
+  },
+  {
+    "id": "postman",
+    "name": "POSTMAN",
+    "icon": "postman",
+    "category": "tools",
+    "description": "API development and testing tool"
+  },
+  {
+    "id": "vuejs",
+    "name": "VUE.JS",
+    "icon": "vuejs",
+    "category": "frontend",
+    "description": "Progressive JavaScript framework"
+  },
+  {
+    "id": "npm",
+    "name": "NPM",
+    "icon": "npm",
+    "category": "tools",
+    "description": "Package manager for JavaScript"
+  },
+  {
+    "id": "git",
+    "name": "GIT",
+    "icon": "git",
+    "category": "tools",
+    "description": "Version control system"
+  },
+  {
+    "id": "javascript",
+    "name": "JAVASCRIPT",
+    "icon": "javascript",
+    "category": "language",
+    "description": "Programming language"
+  },
+  {
+    "id": "php",
+    "name": "PHP",
+    "icon": "php",
+    "category": "language",
+    "description": "Server-side scripting language"
+  },
+  {
+    "id": "mysql",
+    "name": "MYSQL",
+    "icon": "mysql",
+    "category": "database",
+    "description": "Relational database management system"
+  },
+  {
+    "id": "docker",
+    "name": "DOCKER",
+    "icon": "docker",
+    "category": "tools",
+    "description": "Containerization platform"
+  },
+  {
+    "id": "pest-php",
+    "name": "PEST PHP",
+    "icon": "pest-php",
+    "category": "testing",
+    "description": "Testing framework for PHP"
+  },
+  {
+    "id": "inertia",
+    "name": "INERTIA.JS",
+    "icon": "inertia",
+    "category": "frontend",
+    "description": "Modern monolithic applications"
+  },
+  {
+    "id": "node-js",
+    "name": "NODE.JS",
+    "icon": "node-js",
+    "category": "backend",
+    "description": "JavaScript runtime environment"
+  },
+  {
+    "id": "typescript",
+    "name": "TYPESCRIPT",
+    "icon": "typescript",
+    "category": "language",
+    "description": "Typed superset of JavaScript"
+  },
+  {
+    "id": "vite",
+    "name": "VITE",
+    "icon": "vite",
+    "category": "tools",
+    "description": "Build tool and dev server"
+  },
+  {
+    "id": "miro",
+    "name": "MIRO",
+    "icon": "miro",
+    "category": "tools",
+    "description": "Collaborative whiteboarding platform"
+  }
+]
