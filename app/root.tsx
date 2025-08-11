@@ -14,28 +14,25 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap"
+        {/* <link
+          href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Rowdies:wght@300;400;700&display=swap"
           rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap"
-          rel="stylesheet"
-        />
+        /> */}
         <Meta />
         <Link to="~/assets/styles/compiled.css" rel="stylesheet" />
         <Links />
       </head>
       <body>
         <main className="bg-galaxy font-serif text-cream-200 dark:bg-galaxy dark:text-cream-200 relative overflow-x-hidden">
-          <div className="absolute top-0 left-0 w-screen h-screen">
-            <img src={heroBgGradient} alt="gradient background" className="w-full h-full mx-auto" />
-          </div>
           <Navbar />
           <div className="p-4 max-w-screen-xl mx-auto">
             <Outlet />
           </div>
+
           <Footer />
+          {/* <div className="absolute bottom-0 left-0 w-screen h-screen">
+            <img src={heroBgGradient} alt="gradient background" className="w-full h-full mx-auto" />
+          </div> */}
         </main>
         <ScrollRestoration />
         <Scripts />
