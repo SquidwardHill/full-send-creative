@@ -85,6 +85,10 @@ pre {
   font-family: var(--font-mono);
 }
 
+a.font-serif {
+  font-family: var(--font-serif);
+}
+
 .font-rowdies {
   font-family: var(--font-sans);
   text-transform: uppercase;
