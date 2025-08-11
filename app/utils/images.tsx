@@ -8,6 +8,7 @@ import hand from "~/assets/images/hand.png";
 import heroBgGradient from "~/assets/images/hero-bg-gradient.png";
 import catRed from "~/assets/images/cat-red.png";
 import catBlue from "~/assets/images/cat-blue.png";
+import sydneyHome from "~/assets/images/sydney-homepage.png";
 
 export {
   divider,
@@ -20,4 +21,5 @@ export {
   heroBgGradient,
   catRed,
   catBlue,
+  sydneyHome,
 };
