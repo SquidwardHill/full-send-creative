@@ -1,7 +1,6 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import { Analytics } from "@vercel/analytics/react";
 import "~/assets/styles/index.css";
-import { Link } from "@remix-run/react";
 import Navbar from "~/components/Navbar.js";
 import Footer from "~/components/Footer.js";
 import { heroBgGradient } from "~/utils/images.js";
@@ -14,12 +13,7 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        {/* <link
-          href="https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Rowdies:wght@300;400;700&display=swap"
-          rel="stylesheet"
-        /> */}
         <Meta />
-        <Link to="~/assets/styles/compiled.css" rel="stylesheet" />
         <Links />
       </head>
       <body>
