@@ -1,3 +1,7 @@
+/* Import Google Fonts via CSS import for better reliability */
+@import url("https://fonts.googleapis.com/css2?family=Rowdies:wght@300;400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+
 @font-face {
   font-family: "Rowdies";
   src: url("https://fonts.gstatic.com/s/rowdies/v15/pttGNOsCxpg2lqhcn6q9bB5v.woff2") format("woff2");
@@ -26,25 +30,7 @@
   font-family: "Google Sans Mono";
   src: url("https://fonts.gstatic.com/s/googlesansmono/v1/0Pngs8XK0q3smdSuF2mwrmDhnll49RWZWM.woff2")
     format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Google Sans Mono";
-  src: url("https://fonts.gstatic.com/s/googlesansmono/v1/0Pngs8XK0q3smdSuF2mwrmDhnll49RWZWM.woff2")
-    format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Google Sans Mono";
-  src: url("https://fonts.gstatic.com/s/googlesansmono/v1/0Pngs8XK0q3smdSuF2mwrmDhnll49RWZWM.woff2")
-    format("woff2");
-  font-weight: 400;
+  font-weight: 400 500;
   font-style: italic;
   font-display: swap;
 }
@@ -53,7 +39,53 @@
   font-family: "Google Sans Mono";
   src: url("https://fonts.gstatic.com/s/googlesansmono/v1/0Pngs8XK0q3smdSuF2mwrmDhnll49RWZWM.woff2")
     format("woff2");
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 400 500;
+  font-style: normal;
   font-display: swap;
+}
+
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Specific heading weights */
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+body,
+p,
+span,
+div,
+li {
+  font-family: var(--font-serif);
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+.font-rowdies {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
 }

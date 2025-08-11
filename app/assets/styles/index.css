@@ -1,13 +1,18 @@
-@import "./fonts.css";
+@import "./typography.css";
 @import "tailwindcss";
 @import "./custom.css";
 
 @theme {
-  --font-display: "Rowdies", serif;
-  --font-serif: "Google Sans Mono", serif;
-  --font-sans: "Rowdies", sans-serif;
+  --font-sans:
+    "Rowdies", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif: "Google Sans Mono", "Google Sans Code", "ui-serif", "Georgia", serif;
+  --font-mono:
+    "Google Sans Mono", "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   --font-accent: "Rowdies", sans-serif;
-  --font-mono: "Google Sans Mono", monospace;
+
+  --color-avocado-cream-100: #e9eedf;
 
   --color-cream-100: hsla(0, 38%, 90%, 1);
   --color-cream-200: hsla(0, 39%, 84%, 0.8);
@@ -61,3 +66,5 @@
     }
   }
 }
+
+@import "./animations.css";
