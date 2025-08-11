@@ -5,6 +5,9 @@ import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
 import { prisma } from "~/utils/db.server.js";
 import { GlitchImage } from "~/components/GlitchImage.js";
+import SectionTitle from "~/components/typography/SectionTitle.js";
+import skillsData from "~/data/skills.json" with { type: "json" };
+import type { Skill } from "../types/skills.js";
 
 export const meta: MetaFunction = () => {
   return [
@@ -28,6 +31,7 @@ export async function loader({}: LoaderFunctionArgs) {
 }
 
 export default function Index() {
+const skills: Skill[] = skillsData as Skill[];
   const { caseStudies } = useLoaderData<typeof loader>();
 
   return (
@@ -97,12 +101,12 @@ export default function Index() {
         )}
       </section>
 
+{/* Tools/skills */}
       <section className="px-4 py-32 text-center max-w-screen-xl mx-auto">
-        <p className="text-cream-100 text-4xl font-bold pb-8 font-sans tracking-[3px]">
-          Rituals & Ingredients{" "}
-          <img src={sparkle} alt="sparkle" className="inline-block w-12 ml-2" />
-        </p>
-        <SkillCarousel />
+        <SectionTitle text="Arsenal" />
+        <div className="max-w-screen-lg mx-auto my-12">
+          <SkillCarousel skills={skills} />
+        </div>
       </section>
     </div>
   );
