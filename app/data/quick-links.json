@@ -1,0 +1,56 @@
+[
+  {
+    "id": "about",
+    "label": "About",
+    "to": "/about",
+    "description": "Learn more about Sydney Hill",
+    "icon": "user",
+    "type": "internal",
+    "category": "navigation"
+  },
+  {
+    "id": "case-studies",
+    "label": "Case Studies",
+    "to": "/case-studies",
+    "description": "View portfolio projects",
+    "icon": "briefcase",
+    "type": "internal",
+    "category": "navigation"
+  },
+  {
+    "id": "resume",
+    "label": "Resume",
+    "to": "/resume",
+    "description": "Download or view resume",
+    "icon": "document",
+    "type": "internal",
+    "category": "navigation"
+  },
+  {
+    "id": "github",
+    "label": "GitHub",
+    "to": "https://github.com",
+    "description": "View code on GitHub",
+    "icon": "github",
+    "type": "external",
+    "category": "social"
+  },
+  {
+    "id": "dribbble",
+    "label": "Dribbble",
+    "to": "https://dribbble.com",
+    "description": "View design work on Dribbble",
+    "icon": "dribbble",
+    "type": "external",
+    "category": "social"
+  },
+  {
+    "id": "email",
+    "label": "Email",
+    "to": "mailto:sydney@example.com",
+    "description": "Send me an email",
+    "icon": "mail",
+    "type": "external",
+    "category": "social"
+  }
+]
