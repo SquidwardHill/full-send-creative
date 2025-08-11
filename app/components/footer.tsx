@@ -1,77 +1,46 @@
-import { Icon } from "@iconify/react";
+import { FaGithub, FaDribbble } from "react-icons/fa";
 import { Link } from "@remix-run/react";
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
-      id: 1,
-      text: "Dribbble",
-      href: "https://www.linkedin.com/in/sydneyhill/",
-      icon: "fa6-brands:dribbble",
-    },
-    { id: 2, text: "GitHub", href: "https://github.com/sydneyhill", icon: "fa6-brands:github" },
-  ];
-
   return (
-    <footer className="w-full bg-cream-200/5">
-      <div className="max-w-screen-xl mx-auto  p-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          {/* Logo and Copyright */}
-          <div className="mb-4 md:mb-0">
-            <Link to="/">
-              <h1 className="text-3xl font-bold text-bubblegum-500">✨</h1>
-            </Link>
-            <p className="text-sm mt-2">
-              © {currentYear} Sydney Hill. All rights reserved.
-              {/* © {isHydrated ? currentYear : "2024"} Sydney Hill. All rights reserved. */}
-            </p>
-          </div>
+    <footer className="bg-black text-gray-400 border-t border-indigo-400">
+      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-10">
+        {/* Left side */}
+        <div>
+          <h2 className="text-lg font-semibold text-gray-200">The Magic Lab</h2>
+          <p className="mt-1 text-sm tracking-wider">DESIGN AND DEVELOPMENT BY SYDNEY HILL</p>
 
-          {/* Social Links */}
-          {/* <div className="flex space-x-6">
-            {socialLinks.map((link) => (
-              <a
-                key={link.id}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-bubblegum transition-colors duration-300"
-              >
-                <Icon icon={link.icon} className="w-8 h-8" />
-              </a>
-            ))}
-          </div> */}
-
-          {/* Quick Links */}
-          <div className="mt-4 md:mt-0">
-            <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-6">
-              <Link to="/about" className="hover:text-bubblegum transition-colors duration-300">
-                About
-              </Link>
-              <Link to="/resume" className="hover:text-bubblegum transition-colors duration-300">
-                Resume
-              </Link>
-              <a
-                href="mailto:sydneyehill@gmail.com"
-                className="hover:text-bubblegum transition-colors duration-300"
-              >
-                Contact
-              </a>
-              {socialLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-bubblegum transition-colors duration-300"
-                >
-                  <Icon icon={link.icon} className="w-6 h-6" />
-                </a>
-              ))}
-            </div>
+          {/* Social icons */}
+          <div className="flex gap-5 mt-6 text-pink-500 text-2xl">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <FaGithub />
+            </a>
+            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">
+              <FaDribbble />
+            </a>
           </div>
+        </div>
+
+        {/* Right side */}
+        <div>
+          <h3 className="text-gray-200 font-semibold mb-3">Quick Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link to="/case-studies" className="text-pink-500 italic hover:underline">
+                CASE STUDIES
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="text-pink-500 italic hover:underline">
+                ABOUT
+              </Link>
+            </li>
+            <li>
+              <Link to="/resume" className="text-pink-500 italic hover:underline">
+                RESUME
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
