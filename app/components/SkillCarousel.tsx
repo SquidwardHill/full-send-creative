@@ -1,5 +1,5 @@
 import React from "react";
-import "~/assets/styles/SkillCarousel.css";
+import "~/assets/styles/components/SkillCarousel.css";
 import SkillIcon from "./SkillIcon.js";
 import type { Skill } from "../types/skills.js";
 

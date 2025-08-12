@@ -1,0 +1,48 @@
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+}
+
+body,
+p,
+span,
+div,
+li {
+  font-family: var(--font-serif);
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+a.font-serif {
+  font-family: var(--font-serif);
+}
+
+.font-rowdies {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+}

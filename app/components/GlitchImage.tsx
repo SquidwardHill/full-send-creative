@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import "~/assets/styles/animations/glitch.css";
 
 interface GlitchImageProps {
   srcTop: string;
   srcBottom: string;
   alt?: string;
-  className?: string; // optional: lets you control image sizing/responsiveness
+  className?: string; // optional: allow control of image sizing/responsiveness
 }
 
 export function GlitchImage({ srcTop, srcBottom, alt = "", className = "" }: GlitchImageProps) {

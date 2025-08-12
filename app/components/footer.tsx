@@ -1,9 +1,19 @@
-import { FaGithub, FaDribbble } from "react-icons/fa";
-import { Link } from "@remix-run/react";
+import InlineLink from "./typography/InlineLink.js";
+import SocialIcon from "./SocialIcon.js";
+import quickLinksData from "~/data/quick-links.json" with { type: "json" };
+import type { QuickLink } from "~/types/navigation.js";
 
 export default function Footer() {
+  const quickLinks: QuickLink[] = quickLinksData.filter(
+    (link) => link.category === "navigation"
+  ) as QuickLink[];
+
+  const socialLinks: QuickLink[] = quickLinksData.filter(
+    (link) => link.category === "social"
+  ) as QuickLink[];
+
   return (
-    <footer className="bg-black text-gray-400 border-t border-indigo-400">
+    <footer className=" text-cream-100 border-t border-indigo-400 max-w-screen-lg mx-auto">
       <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-10">
         {/* Left side */}
         <div>
@@ -12,12 +22,18 @@ export default function Footer() {
 
           {/* Social icons */}
           <div className="flex gap-5 mt-6 text-pink-500 text-2xl">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <FaGithub />
-            </a>
-            <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer">
-              <FaDribbble />
-            </a>
+            {socialLinks.map((link) => (
+              <a
+                key={link.id}
+                href={link.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={link.description}
+                className="hover:text-bubblegum-400 transition-colors"
+              >
+                <SocialIcon name={link.icon as any} />
+              </a>
+            ))}
           </div>
         </div>
 
@@ -25,21 +41,13 @@ export default function Footer() {
         <div>
           <h3 className="text-gray-200 font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2">
-            <li>
-              <Link to="/case-studies" className="text-pink-500 italic hover:underline">
-                CASE STUDIES
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="text-pink-500 italic hover:underline">
-                ABOUT
-              </Link>
-            </li>
-            <li>
-              <Link to="/resume" className="text-pink-500 italic hover:underline">
-                RESUME
-              </Link>
-            </li>
+            {quickLinks.map((link) => (
+              <li key={link.id}>
+                <InlineLink to={link.to} variant="thin">
+                  {link.label}
+                </InlineLink>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
