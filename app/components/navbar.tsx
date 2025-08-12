@@ -1,21 +1,10 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "@remix-run/react";
-
-// Define the enum for navigation item types
-enum NavItemType {
-  TEXT = 'TEXT',
-  ICON = 'ICON'
-}
-
-// Define the type for navigation items
-type NavItem = {
-  id: number;
-  text: string;
-  href: string;
-  type: NavItemType;
-  icon?: string; // Optional icon name if type is ICON
-}
+import { logoMuted, logoText, logo } from "~/utils/images.js";
+import SocialIcon from "./SocialIcon.js";
+import quickLinksData from "~/data/quick-links.json" with { type: "json" };
+import type { QuickLink } from "../types/navigation.js";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
@@ -24,20 +13,21 @@ export default function Navbar() {
     setNav(!nav);
   };
 
-  // Array containing navigation items
-  const navItems: NavItem[] = [
-    { id: 2, text: "About", href: "/about", type: NavItemType.TEXT },
-    { id: 3, text: "Resume", href: "/resume", type: NavItemType.TEXT },
-    { id: 4, text: "sydneyehill@gmail.com", href: "mailto:sydneyehill@gmail.com", type: NavItemType.TEXT },
-    { id: 5, text: "Dribbble", href: "https://www.linkedin.com/in/sydneyhill/", type: NavItemType.ICON, icon: "fa6-brands:dribbble" },
-    { id: 6, text: "GitHub", href: "https://github.com/sydneyhill", type: NavItemType.ICON, icon: "fa6-brands:github" }
-  ];
+  // Get navigation and social links from quick-links data
+  const navItems: QuickLink[] = quickLinksData.filter(
+    (link) => link.category === "navigation"
+  ) as QuickLink[];
+
+  const socialItems: QuickLink[] = quickLinksData.filter(
+    (link) => link.category === "social"
+  ) as QuickLink[];
 
   return (
     <div>
-      <div className="flex justify-between items-center max-w-screen-xl mx-auto h-full px-2 2xl:px-16">
-        <Link to="/">
-          <h1 className="text-3xl font-bold text-bubblegum-500">✨</h1>
+      <div className="flex justify-between items-center max-w-screen-lg mx-auto h-full px-2 py-4">
+        <Link to="/" className="w-20 py-4">
+          {/* <img src={logoMuted} alt="Black Cat Logo" /> */}
+          <img src={logo} alt="Black Cat Logo" />
         </Link>
 
         <div>
@@ -46,14 +36,24 @@ export default function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item.id}
-                to={item.href}
-                className="p-4 hover:text-bubblegum rounded-xl m-2 cursor-pointer duration-300">
-                {item.type === NavItemType.ICON ? (
-                  <Icon icon={item.icon!} className="w-8 h-8" />
-                ) : (
-                  item.text
-                )}
+                to={item.to}
+                className="p-4 text-cream-100 hover:text-cream-300 font-light font-mono text-sm tracking-wide m-2 cursor-pointer duration-300"
+              >
+                {item.label}
               </Link>
+            ))}
+
+            {/* Social icons */}
+            {socialItems.map((item) => (
+              <a
+                key={item.id}
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 text-cream-100 hover:text-cream-300 rounded-xl m-2 cursor-pointer duration-300"
+              >
+                <SocialIcon name={item.icon as any} className="w-6 h-6" />
+              </a>
             ))}
           </div>
 
@@ -66,13 +66,22 @@ export default function Navbar() {
 
       {/* Mobile Navigation Menu */}
       <div className={nav ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70" : ""}>
-        <div className={nav ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500" : "fixed left-[-100%] top-0 p-10 ease-in duration-500"}>
+        <div
+          className={
+            nav
+              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500"
+              : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
+          }
+        >
           <div>
             <div className="flex w-full items-center justify-between">
               <Link to="/">
                 <h1 className="text-3xl font-bold text-bubblegum-500">SH</h1>
               </Link>
-              <div onClick={handleNav} className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer">
+              <div
+                onClick={handleNav}
+                className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
+              >
                 <Icon icon="mdi:close" className="w-8 h-8" />
               </div>
             </div>
@@ -85,15 +94,24 @@ export default function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item.id}
-                to={item.href}
-                className="p-4 border-b rounded-xl hover:text-bubblegum duration-300 cursor-pointer"
+                to={item.to}
+                className="p-4 border-b rounded-xl text-cream-200 hover:text-cream-300 duration-300 cursor-pointer"
               >
-                {item.type === NavItemType.ICON ? (
-                  <Icon icon={item.icon!} className="w-16 h-16" />
-                ) : (
-                  item.text
-                )}
+                {item.label}
               </Link>
+            ))}
+
+            {/* Mobile Social Items */}
+            {socialItems.map((item) => (
+              <a
+                key={item.id}
+                href={item.to}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 border-b rounded-xl text-cream-200 hover:text-cream-300 duration-300 cursor-pointer"
+              >
+                <SocialIcon name={item.icon as any} className="w-16 h-16" />
+              </a>
             ))}
           </div>
         </div>
