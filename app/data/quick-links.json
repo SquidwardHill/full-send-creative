@@ -29,9 +29,18 @@
   {
     "id": "github",
     "label": "GitHub",
-    "to": "https://github.com",
+    "to": "https://github.com/sydneyhill",
     "description": "View code on GitHub",
     "icon": "github",
+    "type": "external",
+    "category": "social"
+  },
+  {
+    "id": "linkedin",
+    "label": "LinkedIn",
+    "to": "https://www.linkedin.com/in/sydneyhill/",
+    "description": "Connect on LinkedIn",
+    "icon": "linkedin",
     "type": "external",
     "category": "social"
   },
@@ -47,10 +56,10 @@
   {
     "id": "email",
     "label": "Email",
-    "to": "mailto:sydney@example.com",
+    "to": "mailto:sydneyehill@gmail.com",
     "description": "Send me an email",
     "icon": "mail",
     "type": "external",
-    "category": "social"
+    "category": "contact"
   }
 ]
