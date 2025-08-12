@@ -8,7 +8,11 @@
 
 .glitch-3 {
   color: #f16f6f;
-  animation: glitch3 2.5s infinite;
+  animation: glitch3 2.5s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2.5s ease-in-out infinite;
 }
 /*Keyframes*/
 
@@ -122,13 +126,23 @@
   }
 }
 
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 @keyframes glitch3 {
   0% {
     transform: none;
     opacity: 0.25;
   }
   7% {
-    transform: translate(2px, 3px);
+    transform: translate(1px, 2px);
     opacity: 0.5;
   }
   10% {
@@ -140,7 +154,7 @@
     opacity: 0.25;
   }
   30% {
-    transform: translate(5px, 2px);
+    transform: translate(3px, 1px);
     opacity: 0.5;
   }
   35% {
@@ -152,7 +166,7 @@
     opacity: 0.25;
   }
   55% {
-    transform: translate(5px, 1px);
+    transform: translate(4px, 1px);
     opacity: 0.5;
   }
   50% {
@@ -164,7 +178,7 @@
     opacity: 0.25;
   }
   75% {
-    transform: translate(2px, 6px);
+    transform: translate(1px, 4px);
     opacity: 0.5;
   }
   80% {

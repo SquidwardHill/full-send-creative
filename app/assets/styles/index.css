@@ -1,18 +1,21 @@
-@import "./typography.css";
+@import "./typography/fonts.css";
 @import "tailwindcss";
-@import "./custom.css";
+@import "./typography/rules.css";
 
 @theme {
   --font-sans:
     "Rowdies", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: "Google Sans Mono", "Google Sans Code", "ui-serif", "Georgia", serif;
+  --font-serif: "Google Sans Mono", "ui-serif", "Georgia", serif;
   --font-mono:
-    "Google Sans Mono", "Google Sans Code", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+    "Google Sans Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   --font-accent: "Rowdies", sans-serif;
 
+  --color-abyss: #0f0d13;
+
   --color-avocado-cream-100: #e9eedf;
+  --color-avocado-cream-200: #c4c7bf;
 
   --color-cream-100: hsla(0, 38%, 90%, 1);
   --color-cream-200: hsla(0, 39%, 84%, 0.8);
@@ -21,6 +24,7 @@
   --color-galaxy-400: hsla(270, 92%, 3%, 1);
 
   --color-bubblegum: hsla(309, 78%, 53%, 1);
+  --color-bubblegum-300: hsla(305, 46%, 74%, 1);
   --color-bubblegum-400: hsla(313, 100%, 74%, 1);
   --color-bubblegum-500: hsla(309, 78%, 53%, 1);
   --color-bubblegum-600: hsla(313, 97%, 53%, 1);
@@ -67,4 +71,4 @@
   }
 }
 
-@import "./animations.css";
+@import "./custom.css";

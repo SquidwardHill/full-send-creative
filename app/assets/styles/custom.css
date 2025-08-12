@@ -9,3 +9,12 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.bg-glitch {
+  background-image:
+    url("~/assets/images/disco-glitch-bg.png"), url("~/assets/images/star-blast-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: glitch 2.5s infinite;
+}
