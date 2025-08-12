@@ -1,4 +1,4 @@
-import { FaGithub, FaDribbble, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaDribbble, FaEnvelope, FaLinkedin } from "react-icons/fa";
 import type { IconType } from "react-icons";
 
 // Map icon names to actual icon components
@@ -6,6 +6,7 @@ const iconMap: Record<string, IconType> = {
   github: FaGithub,
   dribbble: FaDribbble,
   mail: FaEnvelope,
+  linkedin: FaLinkedin,
   // Add more icons as needed
 };
 

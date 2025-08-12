@@ -10,6 +10,7 @@ import {
   SiTypescript,
   SiVitest,
   SiMiro,
+  SiPostgresql,
 } from "react-icons/si";
 import { FaVuejs, FaPhp, FaDocker, FaNodeJs, FaJs, FaReact, FaNpm } from "react-icons/fa";
 import { GrMysql } from "react-icons/gr";
@@ -37,6 +38,7 @@ const skillIconMap: Record<string, IconType> = {
   typescript: SiTypescript,
   vite: SiVitest,
   miro: SiMiro,
+  postgres: SiPostgresql,
 };
 
 // Type for valid skill icon names

@@ -26,7 +26,7 @@ export default function SkillCarousel({ skills, speed = 20 }: SkillCarouselProps
         }}
       >
         {doubledSkills.map((skill, idx) => (
-          <div key={idx} className="flex items-center text-pink-500 min-w-[15%] shrink-0">
+          <div key={idx} className="flex items-center text-bubblegum-500 min-w-[15%] shrink-0">
             <div className="w-8 h-8 flex items-center justify-center">
               <SkillIcon name={skill.icon as any} />
             </div>
