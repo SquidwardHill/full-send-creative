@@ -91,6 +91,13 @@
     "description": "Relational database management system"
   },
   {
+    "id": "postgres",
+    "name": "POSTGRES SQL",
+    "icon": "postgres",
+    "category": "tools",
+    "description": "Collaborative whiteboarding platform"
+  },
+  {
     "id": "docker",
     "name": "DOCKER",
     "icon": "docker",
