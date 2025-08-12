@@ -13,15 +13,18 @@ export default function Footer() {
   ) as QuickLink[];
 
   return (
-    <footer className=" text-cream-100 border-t border-indigo-400 max-w-screen-lg mx-auto">
-      <div className="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between gap-10">
+    <footer className=" text-cream-100  max-w-screen-lg mx-auto px-4 pb-32 pt-12 ">
+      <div className="border-t border-bubblegum-300/50 py-8"></div>
+      <div className=" flex flex-col md:flex-row justify-between gap-10 ">
         {/* Left side */}
         <div>
-          <h2 className="text-lg font-semibold text-gray-200">The Magic Lab</h2>
-          <p className="mt-1 text-sm tracking-wider">DESIGN AND DEVELOPMENT BY SYDNEY HILL</p>
+          <h2 className="text-lg font-semibold text-cream-100">The Black Cat</h2>
+          <p className="mt-2 text-sm tracking-wider text-cream-200 uppercase">
+            A collection of work by Sydney Hill
+          </p>
 
           {/* Social icons */}
-          <div className="flex gap-5 mt-6 text-pink-500 text-2xl">
+          <div className="flex gap-5 mt-8 text-bubblegum-300 text-2xl">
             {socialLinks.map((link) => (
               <a
                 key={link.id}
@@ -39,11 +42,15 @@ export default function Footer() {
 
         {/* Right side */}
         <div>
-          <h3 className="text-gray-200 font-semibold mb-3">Quick Links</h3>
+          <h3 className="text-cream-100 font-semibold mb-3 tracking-wider">Quick Links</h3>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.id}>
-                <InlineLink to={link.to} variant="thin">
+                <InlineLink
+                  to={link.to}
+                  variant="thin"
+                  className="uppercase text-sm tracking-wider text-bubblegum-300"
+                >
                   {link.label}
                 </InlineLink>
               </li>
