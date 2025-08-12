@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from "@remix-run/react";
 import type { LoaderFunctionArgs } from "@remix-run/node";
-import TitleTag from "../components/TitleTag.js";
+import Label from "../components/typography/Label.js";
 import CaseStudySection from "../components/case-study/Section.js";
 import SkillStackSection from "../components/case-study/SkillStackSection.js";
 import type { SkillArea, Tool } from "@prisma/client";
@@ -32,6 +32,7 @@ interface RelatedCaseStudy {
   slug: string;
   title: string;
   hook: string;
+  cover?: string;
 }
 
 function groupSkillsByArea(skills: CaseStudySkill[]) {
@@ -83,12 +84,20 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       slug: { not: slug },
     },
     take: 2,
-    select: {
-      slug: true,
-      title: true,
-      hook: true,
+    include: {
+      images: {
+        where: { type: "COVER" },
+        take: 1,
+      },
     },
   });
+
+  const relatedWithCovers = related.map((study) => ({
+    slug: study.slug,
+    title: study.title,
+    hook: study.hook,
+    cover: study.images[0]?.url ?? coverPlaceholder,
+  }));
 
   return json({
     caseStudy: {
@@ -96,7 +105,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
       coverImage,
       processImages,
     },
-    related,
+    related: relatedWithCovers,
   });
 };
 
@@ -104,20 +113,20 @@ export default function CaseStudy() {
   const { caseStudy, related } = useLoaderData<typeof loader>();
 
   return (
-    <div className="container mx-auto max-w-screen-lg px-12 pt-4">
+    <div className="container mx-auto max-w-screen-lg pt-8 ">
       {/* Return Home Link */}
-      <div className="mb-4">
+      {/* <div className="mb-8">
         <Link
           to="/"
-          className="text-sm text-pink-300 hover:text-pink-100 transition-colors underline underline-offset-4"
+          className="text-md tracking-wide text-bubblegum-500 hover:text-pink-100 transition-colors underline underline-offset-4"
         >
-          ← Back Home
+          Browse More
         </Link>
-      </div>
+      </div> */}
 
-      {/* Case Study Header */}
-      <div className="border-b-2 border-bubblegum-400">
-        <div className="flex flex-col md:flex-row py-10 gap-12 ">
+      {/*bg-glitch bg-cover bg-center  */}
+      <div className="mb-8">
+        <div className="flex flex-col md:flex-row gap-12">
           <div className="flex-5">
             <img
               src={caseStudy.coverImage ?? coverPlaceholder}
@@ -126,16 +135,21 @@ export default function CaseStudy() {
             />
           </div>
           <div className="flex-7 content-center">
-            <TitleTag text="Case Study" color="gradient-bubblegum-white" />
-            <h1 className="text-2xl lg:text-4xl font-bold text-white mb-4 leading-[125%] tracking-wide">
-              {caseStudy.hook}
-            </h1>
+            <Label text="Case Study" />
+            <h2 className=" text-cream-100 ">{caseStudy.hook}</h2>
           </div>
         </div>
-        <CaseStudySection title="TL;DR" body={caseStudy.tldr} />
+        <CaseStudySection isStrong title="TLDR" body={caseStudy.tldr} />
       </div>
 
       {/* TLDR + Body Sections */}
+
+      <div className="flex flex-row items-center gap-8">
+        <div className="flex">
+          <h4 className="text-2xl font-bold text-cream-100 tracking-wide w-full">In Depth</h4>
+        </div>
+        <div className="bg-gradient-to-r from-bubblegum-500 to-pink-300 h-0.5 flex-1"></div>
+      </div>
 
       <CaseStudySection title="The Challenge" body={caseStudy.challenge} />
       <CaseStudySection title="Product Need" body={caseStudy.need} />
@@ -147,7 +161,7 @@ export default function CaseStudy() {
 
       {/* Process Images */}
       <section className="py-12">
-        <h3 className="text-md font-light text-cream-200">Process Images</h3>
+        <h4 className="text-2xl font-bold text-cream-100 mb-8 tracking-wide">Process Images</h4>
         <div className="flex overflow-x-auto space-x-4 py-8">
           {caseStudy.processImages.map((image: string, index: number) => (
             <div key={index}>
@@ -159,19 +173,17 @@ export default function CaseStudy() {
 
       {/* Related Case Studies */}
       {related.length > 0 && (
-        <section className="pt-12 border-t border-zinc-800 mt-20">
-          <h3 className="text-md font-light text-cream-200 mb-6">More from this realm...</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+        <section className="py-8 mb-8">
+          <h4 className="text-2xl font-bold text-cream-100 mb-8 tracking-wide">Browse Others</h4>
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {related.map((item: RelatedCaseStudy) => (
-              <Link
-                key={item.slug}
-                to={`/case-studies/${item.slug}`}
-                className="group border border-zinc-800 rounded-lg p-6 transition hover:border-pink-400"
-              >
-                <h4 className="text-lg font-semibold text-white group-hover:text-pink-300">
-                  {item.title}
-                </h4>
-                <p className="mt-2 text-cream-200">{item.hook}</p>
+              <Link key={item.slug} to={`/case-studies/${item.slug}`}>
+                <div className="mb-4">
+                  <img src={item.cover} alt={item.title} className="w-full h-full object-cover" />
+                </div>
+                <h5 className="text-sm font-sans uppercase font-extralight tracking-wider text-cream-100 group-hover:text-pink-300">
+                  {item.hook}
+                </h5>
               </Link>
             ))}
           </div>

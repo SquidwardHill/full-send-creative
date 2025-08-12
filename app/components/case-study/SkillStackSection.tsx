@@ -1,4 +1,5 @@
 import type { SkillArea, Tool } from "@prisma/client";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 export interface CaseStudySkill {
   area: SkillArea;
@@ -35,32 +36,25 @@ export default function SkillStackSection({ skills }: Props) {
 
   return (
     <section className="my-10">
-      <h3 className="text-md font-light text-cream-200 mb-4">Tools & Tech Stack</h3>
-      {Object.entries(grouped).map(([area, tools]) => (
-        <div key={area} className="mb-6">
-          <h4 className="text-cream-100 font-semibold text-sm uppercase mb-2 tracking-wide">
-            {skillAreaLabels[area as SkillArea]}
-          </h4>
-          <ul className="flex flex-wrap gap-2">
-            {tools.map((tool) => (
-              <li
-                key={tool.id}
-                className="bg-zinc-800 px-3 py-1 rounded-full text-sm text-white flex items-center"
-              >
-                {tool.icon && (
-                  <span
-                    className="mr-1 inline-block"
-                    dangerouslySetInnerHTML={{
-                      __html: `<iconify-icon icon="${tool.icon}" width="16" height="16"></iconify-icon>`,
-                    }}
-                  />
-                )}
-                {tool.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <h4 className="text-2xl font-bold text-cream-100 mb-8 tracking-wide">TOOLS AND TECH STACK</h4>
+      <div className="space-y-6">
+        {Object.entries(grouped).map(([area, tools]) => (
+          <div key={area} className="grid grid-cols-10 gap-2 items-start">
+            <h5 className="col-span-2 text-cream-200 font-bold">
+              {skillAreaLabels[area as SkillArea]}
+            </h5>
+            <div className="col-span-8 flex flex-wrap gap-2 items-center">
+              <FaLongArrowAltRight className="text-bubblegum-400 mr-2" />
+              {tools.map((tool) => (
+                <span key={tool.id} className="text-cream-200 text-base font-light">
+                  {tool.name}
+                  {tools.indexOf(tool) < tools.length - 1 && ","}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -1,10 +1,11 @@
-import { spookyHand, aboutPicture } from "~/utils/images";
+import { GlitchImage } from "~/components/GlitchImage.js";
+import { glitchCatRed, glitchCatBlue, aboutPicture } from "~/utils/images.js";
 
 export default function About() {
   return (
     <div>
       <section className="text-center max-w-screen-md mx-auto">
-        <img src={spookyHand} alt="All seeing hand" className="max-w-60 mx-auto" />
+        <GlitchImage srcTop={glitchCatRed} srcBottom={glitchCatBlue} alt="glitch kitty" />
         <p className="text-cream-200 text-2xl font-normal tracking-wider pb-4 pt-6">
           Branding - Product Design - Full-stack Engineering
         </p>
