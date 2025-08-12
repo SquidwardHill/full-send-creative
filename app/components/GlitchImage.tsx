@@ -1,14 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import "~/assets/styles/animations/glitch.css";
+import { glitchCatText } from "~/utils/images.js";
 
 interface GlitchImageProps {
   srcTop: string;
   srcBottom: string;
+  srcDecorator?: string; // optional: overlay image on top
   alt?: string;
   className?: string; // optional: allow control of image sizing/responsiveness
 }
 
-export function GlitchImage({ srcTop, srcBottom, alt = "", className = "" }: GlitchImageProps) {
+export function GlitchImage({
+  srcTop,
+  srcBottom,
+  srcDecorator,
+  alt = "",
+  className = "",
+}: GlitchImageProps) {
   const [glitchActive, setGlitchActive] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -38,9 +46,14 @@ export function GlitchImage({ srcTop, srcBottom, alt = "", className = "" }: Gli
   }, []);
 
   return (
-    <div className="relative inline-block overflow-hidden w-64 h-64">
-      {/* Base layer */}
-      {/* <img src={src} alt={alt} className={`relative z-10 ${className}`} /> */}
+    <div className="relative inline-block overflow-hidden w-54 h-54 ">
+      {srcDecorator && (
+        <img
+          src={srcDecorator}
+          alt="Decorator"
+          className="absolute top-0 left-0 z-10 animate-pulse-subtle"
+        />
+      )}
 
       {/* Red-shifted glitch layer */}
       <img
