@@ -4,9 +4,9 @@ import glitchCatRed from "~/assets/images/glitch-cat-red.png";
 import glitchCatBlue from "~/assets/images/glitch-cat-blue.png";
 import discoGlitchBg from "~/assets/images/disco-glitch-bg.png";
 import logo from "~/assets/images/black-cat-logo.png";
-import glitchCatText from "~/assets/images/black-cat-text-layer.png";
-import logoText from "~/assets/images/black-cat-logo-text-only.png";
-import sydneyPic from "~/assets/images/intro-image-sydney.png";
+import sydneyHill from "~/assets/images/sydney-hill.png";
+import handRed from "~/assets/images/hand-red.png";
+import handBlue from "~/assets/images/hand-blue.png";
 
 export {
   coverPlaceholder,
@@ -15,7 +15,7 @@ export {
   glitchCatBlue,
   discoGlitchBg,
   logo,
-  glitchCatText,
-  logoText,
-  sydneyPic,
+  sydneyHill,
+  handRed,
+  handBlue,
 };
