@@ -18,15 +18,16 @@ export default function App() {
       </head>
       <body>
         <main className="bg-galaxy font-serif text-cream-200 dark:bg-galaxy dark:text-cream-200 relative overflow-x-hidden">
+          <img
+            src={heroBgGradient}
+            alt="gradient background"
+            className="w-full h-screen-1/2 absolute top-0 mx-auto bg-cover z-0"
+          />
           <Navbar />
           <div className="p-4 max-w-screen-xl mx-auto">
             <Outlet />
           </div>
-
           <Footer />
-          {/* <div className="absolute bottom-0 left-0 w-screen h-screen">
-            <img src={heroBgGradient} alt="gradient background" className="w-full h-full mx-auto" />
-          </div> */}
         </main>
         <ScrollRestoration />
         <Scripts />

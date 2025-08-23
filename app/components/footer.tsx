@@ -13,8 +13,8 @@ export default function Footer() {
   ) as QuickLink[];
 
   return (
-    <footer className=" text-cream-100  max-w-screen-lg mx-auto px-4 pb-32 pt-12 ">
-      <div className="border-t border-bubblegum-300/50 py-8"></div>
+    <footer className="relative z-10 max-w-screen-lg mx-auto px-4 pb-32 pt-12 bg-rainbow-gradient">
+      <div className="border-t border-avocado-cream-200/50 py-8"></div>
       <div className=" flex flex-col md:flex-row justify-between gap-10 ">
         {/* Left side */}
         <div>

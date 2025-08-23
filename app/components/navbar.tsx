@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "@remix-run/react";
-import { logoMuted, logoText, logo } from "~/utils/images.js";
+import { logoText, logo } from "~/utils/images.js";
 import SocialIcon from "./SocialIcon.js";
 import quickLinksData from "~/data/quick-links.json" with { type: "json" };
 import type { QuickLink } from "../types/navigation.js";
@@ -24,10 +24,9 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="flex justify-between items-center max-w-screen-lg mx-auto h-full px-2 py-4">
+      <div className="relative z-10 flex justify-between items-center max-w-screen-lg mx-auto h-full px-2 py-4">
         <Link to="/" className="w-20 py-4">
-          {/* <img src={logoMuted} alt="Black Cat Logo" /> */}
-          <img src={logo} alt="Black Cat Logo" />
+          <img src={logoText} alt="Black Cat Logo" />
         </Link>
 
         <div>
@@ -76,7 +75,7 @@ export default function Navbar() {
           <div>
             <div className="flex w-full items-center justify-between">
               <Link to="/">
-                <h1 className="text-3xl font-bold text-bubblegum-500">SH</h1>
+                <img src={logo} alt="Black Cat Logo" />
               </Link>
               <div
                 onClick={handleNav}

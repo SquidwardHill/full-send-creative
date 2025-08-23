@@ -3,26 +3,14 @@ h2,
 h3,
 h4 {
   font-family: var(--font-sans);
-  font-weight: 500;
   @apply uppercase tracking-wide;
 }
 
-h1 {
-  font-weight: 400;
+.h1 {
   @apply text-2xl lg:text-[38px] leading-[130%];
 }
-
-h2 {
-  font-weight: 600;
+.h2 {
   @apply text-xl lg:text-2xl leading-[130%] tracking-wider;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 400;
-  @apply leading-normal;
 }
 
 body,
@@ -36,17 +24,4 @@ li {
 code,
 pre {
   font-family: var(--font-mono);
-}
-
-a.font-serif {
-  font-family: var(--font-serif);
-}
-
-p.font-sans {
-  font-family: var(--font-sans);
-}
-
-.font-rowdies {
-  font-family: var(--font-sans);
-  text-transform: uppercase;
 }

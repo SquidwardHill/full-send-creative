@@ -18,3 +18,10 @@
   background-repeat: no-repeat;
   animation: glitch 2.5s infinite;
 }
+
+.img-gradient {
+  background-image: url("~/assets/images/hero-bg-gradient.png");
+  background-size: cover;
+  background-position: bottom center;
+  background-repeat: no-repeat;
+}

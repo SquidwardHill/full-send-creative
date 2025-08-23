@@ -38,96 +38,31 @@ export default function Index() {
 
   return (
     <div>
-      {/* <section className="p-4 text-center max-w-screen-lg mx-auto bg-center mt-12">
-        <div className="max-w-screen-lg mx-auto px-8">
+      <section className="p-4 text-center max-w-screen-lg mx-auto bg-center mt-6">
+        <div className="max-w-screen-md mx-auto">
           <GlitchImage
             srcTop={glitchCatRed}
             srcBottom={glitchCatBlue}
-            srcDecorator={glitchCatText}
-            alt="glitch kitty"
+            // srcDecorator={glitchCatText}
+            alt="The Black Cat"
           />
-
-          <h1 className="text-cream-100 mt-4 pb-8 max-w-sceen-md leading-tight">
-            I distill complex ideas into functional, aesthetic systems
+          <h1 className="text-cream-100 font-semibold text-2xl leading-tight mt-4">
+            Playful, strategic, and just a little rebellious.
           </h1>
-
-          <div className="grid grid-cols-4 gap-8 items-center border-1 border-cream-100/50 rounded-lg p-6">
-            <div className="col-span-1">
-              <img src={sydney} alt="Sydney Hill" className="w-full p-4" />
-            </div>
-            <div className="col-span-3 text-left flex flex-col">
-              <p className="text-cream-200 text-lg pb-6">
-                I’m Sydney, a designer and full-stack developer who thrives on blending creativity,
-                logic, and intuition. Whether shaping interfaces or engineering seamless
-                functionality, my magic lies in transforming ideas into thoughtfully crafted
-                experiences.
-              </p>
-              <div className="flex flex-row gap-6">
-                <a
-                  className="font-sans text-sm tracking-wider uppercase text-bubblegum-400 font-semibold flex items-center gap-2 underline"
-                  title="Professional Experience"
-                >
-                  Business up front
-                </a>
-                <a
-                  className="font-sans text-sm tracking-wider uppercase text-bubblegum-300 font-semibold flex items-center gap-2 underline"
-                  title="Who am I?"
-                >
-                  Party in the back
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      <section className="p-4 text-center max-w-screen-lg mx-auto bg-center mt-12">
-        <div className="max-w-screen-lg mx-auto px-8">
-          <span className="text-bubblegum-500 mb6">The Black Cat</span>
-          <h1 className="text-cream-100 leading-tight">
-            Sleek, strategic, and just a little rebellious.
-          </h1>
-          {/* I distill complex ideas into functional, aesthetic systems */}
-          <div className="grid grid-cols-4 gap-8 items-center ">
-            <div className="col-span-1">
-              <img src={sydneyHome} alt="Sydney Hill" className="w-full" />
-            </div>
-            <div className="col-span-3 text-left flex flex-col">
-              <p className="text-cream-200 text-lg pb-6">
-                I’m Sydney, a designer and full-stack developer who thrives on blending creativity,
-                logic, and intuition. Whether shaping interfaces or engineering seamless
-                functionality, my magic lies in transforming ideas into thoughtfully crafted
-                experiences.
-              </p>
-              {/* <div className="flex flex-row gap-6">
-                <a
-                  className="font-sans text-sm tracking-wider uppercase text-bubblegum-400 font-semibold flex items-center gap-2 underline"
-                  title="Professional Experience"
-                >
-                  Business up front
-                </a>
-                <a
-                  className="font-sans text-sm tracking-wider uppercase text-bubblegum-300 font-semibold flex items-center gap-2 underline"
-                  title="Who am I?"
-                >
-                  Party in the back
-                </a>
-              </div> */}
-            </div>
-          </div>
+          <p className="text-cream-200 text-xl py-6">
+            I distill complex ideas into functional, aesthetic systems-- the medium varies. Here's a
+            collection of my professional work. Thanks for looking.
+          </p>
         </div>
       </section>
 
-      {/* Case Studies */}
       <section className="mt-24 text-center max-w-screen-lg mx-auto">
-        {/* <h2 className="text-cream-100 mb-8">Case Studies</h2> */}
         <div className="flex flex-row items-center gap-8 px-4 mb-4">
           <div className="flex">
             <h4 className="text-2xl font-bold text-cream-100 tracking-wide w-full">Case Studies</h4>
           </div>
           <div className="bg-gradient-to-r from-bubblegum-500 to-pink-300 h-0.5 flex-1"></div>
         </div>
-        {/* <p className="text-cream-200 text-xl pb-6">Some things I've made.</p> */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-2">
           {caseStudies.map(
             (cs: {
@@ -154,10 +89,11 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Tools/skills */}
-      <section className="px-4 pt-24 pb-8 text-center max-w-screen-xl mx-auto">
-        <SectionTitle text="Arsenal" />
-        <div className="max-w-screen-lg mx-auto my-12">
+      <section className="px-4 pt-24 pb-8 text-center max-w-screen-lg mx-auto">
+        <div className="flex flex-row items-center gap-8 px-4 mb-4">
+          <div className="flex">
+            <h4 className="text-2xl font-bold text-cream-100 tracking-wide w-full">Arsenal</h4>
+          </div>
           <SkillCarousel skills={skills} />
         </div>
       </section>
