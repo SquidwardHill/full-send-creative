@@ -13,12 +13,14 @@ export default function Footer() {
   ) as QuickLink[];
 
   return (
-    <footer className="relative z-10 max-w-screen-lg mx-auto px-4 pb-32 pt-12 bg-rainbow-gradient">
+    <footer className="px-8 md:px-0 max-w-screen-lg mx-auto mb-32 mt-12 bg-rainbow-gradient">
       <div className="border-t border-avocado-cream-200/50 py-8"></div>
       <div className=" flex flex-col md:flex-row justify-between gap-10 ">
         {/* Left side */}
         <div>
-          <h2 className="text-lg font-semibold text-cream-100">The Black Cat</h2>
+          <h4 className="text-cream-100 text-2xl font-semibold mb-3 tracking-wider">
+            The Black Cat
+          </h4>
           <p className="mt-2 text-sm tracking-wider text-cream-200 uppercase">
             A collection of work by Sydney Hill
           </p>
@@ -42,7 +44,7 @@ export default function Footer() {
 
         {/* Right side */}
         <div>
-          <h3 className="text-cream-100 font-semibold mb-3 tracking-wider">Quick Links</h3>
+          <h4 className="text-cream-100 text-2xl font-semibold mb-3 tracking-wider">Quick Links</h4>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.id}>

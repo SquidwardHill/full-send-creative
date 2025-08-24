@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import "~/assets/styles/animations/glitch.css";
-import { glitchCatText } from "~/utils/images.js";
 
 interface GlitchImageProps {
   srcTop: string;
   srcBottom: string;
-  srcDecorator?: string; // optional: overlay image on top
+  srcDecorator?: string; 
   alt?: string;
-  className?: string; // optional: allow control of image sizing/responsiveness
+  className?: string;
 }
 
 export function GlitchImage({
@@ -46,7 +45,7 @@ export function GlitchImage({
   }, []);
 
   return (
-    <div className="relative inline-block overflow-hidden w-54 h-54 ">
+    <div className={`relative inline-block overflow-hidden ${className} `}>
       {srcDecorator && (
         <img
           src={srcDecorator}

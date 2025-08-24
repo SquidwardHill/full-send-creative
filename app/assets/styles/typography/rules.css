@@ -3,14 +3,17 @@ h2,
 h3,
 h4 {
   font-family: var(--font-sans);
-  @apply uppercase tracking-wide;
+  @apply leading-[125%] font-bold tracking-wide;
 }
 
-.h1 {
-  @apply text-2xl lg:text-[38px] leading-[130%];
+h1 {
+  @apply text-2xl lg:text-[42px];
 }
-.h2 {
-  @apply text-xl lg:text-2xl leading-[130%] tracking-wider;
+h2 {
+  @apply text-2xl lg:text-3xl;
+}
+h3 {
+  @apply text-xl lg:text-[28px] ;
 }
 
 body,

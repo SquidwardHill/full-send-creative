@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "@remix-run/react";
-import { logoText, logo } from "~/utils/images.js";
+import { logo } from "~/utils/images.js";
 import SocialIcon from "./SocialIcon.js";
 import quickLinksData from "~/data/quick-links.json" with { type: "json" };
 import type { QuickLink } from "../types/navigation.js";
@@ -24,9 +24,9 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="relative z-10 flex justify-between items-center max-w-screen-lg mx-auto h-full px-2 py-4">
-        <Link to="/" className="w-20 py-4">
-          <img src={logoText} alt="Black Cat Logo" />
+      <div className="relative z-10 flex justify-between items-center max-w-screen-lg mx-auto h-full px-4 py-4">
+        <Link to="/" className="w-32 py-4">
+          <img src={logo} alt="Black Cat Logo" />
         </Link>
 
         <div>
@@ -57,35 +57,32 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div onClick={handleNav} className="md:hidden cursor-pointer">
-            <Icon icon="mdi:menu" className="w-8 h-8" />
+          <div onClick={handleNav} className="md:hidden cursor-pointer mr-2">
+            <Icon icon="mdi:menu" className="w-8 h-8 text-bubblegum-300" />
           </div>
         </div>
       </div>
 
       {/* Mobile Navigation Menu */}
-      <div className={nav ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70" : ""}>
+      <div className={nav ? "md:hidden fixed left-0 top-0 w-full h-screen  z-50" : ""}>
         <div
           className={
             nav
-              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500"
+              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-galaxy p-10 ease-in duration-500 z-50 shadow-lg shadow-black/50"
               : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
           }
         >
           <div>
             <div className="flex w-full items-center justify-between">
-              <Link to="/">
-                <img src={logo} alt="Black Cat Logo" />
+              <Link to="/" onClick={handleNav} className="w-30">
+                <img src={logo} alt="The Black Cat Logo" />
               </Link>
-              <div
-                onClick={handleNav}
-                className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
-              >
-                <Icon icon="mdi:close" className="w-8 h-8" />
+              <div onClick={handleNav} className=" p-3 cursor-pointer">
+                <Icon icon="fa6-solid:xmark" className="w-6 h-6 text-bubblegum-300" />
               </div>
             </div>
             <div className="border-b border-gray-300 my-4">
-              <p className="w-[85%] md:w-[90%] py-4">Let's build something together</p>
+              <p className="w-[85%] md:w-[90%] py-4">A collection of work by Sydney Hill</p>
             </div>
           </div>
           <div className="py-4 flex flex-col">
@@ -94,24 +91,27 @@ export default function Navbar() {
               <Link
                 key={item.id}
                 to={item.to}
-                className="p-4 border-b rounded-xl text-cream-200 hover:text-cream-300 duration-300 cursor-pointer"
+                onClick={handleNav}
+                className="py-2 text-cream-200 hover:text-cream-300 duration-300 cursor-pointer"
               >
                 {item.label}
               </Link>
             ))}
 
-            {/* Mobile Social Items */}
-            {socialItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.to}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 border-b rounded-xl text-cream-200 hover:text-cream-300 duration-300 cursor-pointer"
-              >
-                <SocialIcon name={item.icon as any} className="w-16 h-16" />
-              </a>
-            ))}
+            <div className="flex gap-8 py-8">
+              {/* Mobile Social Items */}
+              {socialItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.to}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" text-cream-200 hover:text-cream-300 duration-300 cursor-pointer"
+                >
+                  <SocialIcon name={item.icon as any} className="w-6 h-6" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -7,6 +7,11 @@ import logo from "~/assets/images/black-cat-logo.png";
 import sydneyHill from "~/assets/images/sydney-hill.png";
 import handRed from "~/assets/images/hand-red.png";
 import handBlue from "~/assets/images/hand-blue.png";
+import sydneyCollageDesktop from "~/assets/images/sydney-about-collage-desktop.png";
+import sydneyCollageTablet from "~/assets/images/sydney-about-collage-tablet.png";
+import sydneyCollageMobile from "~/assets/images/sydney-about-collage-mobile.png";
+import coffinRed from "~/assets/images/coffin-red.png";
+import coffinBlue from "~/assets/images/coffin-blue.png";
 
 export {
   coverPlaceholder,
@@ -18,4 +23,9 @@ export {
   sydneyHill,
   handRed,
   handBlue,
+  sydneyCollageDesktop,
+  sydneyCollageTablet,
+  sydneyCollageMobile,
+  coffinRed,
+  coffinBlue,
 };

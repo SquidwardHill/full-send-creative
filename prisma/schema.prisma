@@ -18,16 +18,19 @@ model CaseStudy {
   slug          String @unique
   hook          String
   resumeSummary String
-  tldr          String
+  tldr          String @db.Text // HTML content
 
-  challenge    String
-  task         String
-  contribution String
-  result       String
+  challenge    String @db.Text // HTML content
+  task         String @db.Text // HTML content
+  contribution String @db.Text // HTML content
+  result       String @db.Text // HTML content
   themeColor   String @default("purple-pizzazz-500")
 
   skills        CaseStudySkill[]
   images Image[]
+  
+  active        Boolean @default(true)
+  showcase      Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -16,12 +16,14 @@ interface CaseStudySkill {
 }
 
 interface CaseStudy {
+  active: boolean;
+  showcase: boolean;
   title: string;
   hook: string;
   coverImage: string | null;
   tldr: string;
   challenge: string;
-  need: string;
+  task: string;
   contribution: string;
   result: string;
   processImages: string[];
@@ -55,8 +57,11 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     throw new Response("Missing slug", { status: 400 });
   }
 
-  const caseStudy = await prisma.caseStudy.findUnique({
-    where: { slug },
+  const caseStudy = await prisma.caseStudy.findFirst({
+    where: {
+      slug,
+      active: true,
+    },
     include: {
       images: true,
       skills: {
@@ -71,7 +76,6 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     throw new Response("Case study not found", { status: 404 });
   }
 
-  // extract cover + process images
   const coverImage =
     caseStudy.images.find((img: { type: string }) => img.type === "COVER")?.url ?? null;
   const processImages = caseStudy.images
@@ -82,6 +86,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   const related = await prisma.caseStudy.findMany({
     where: {
       slug: { not: slug },
+      active: true,
     },
     take: 2,
     include: {
@@ -152,7 +157,7 @@ export default function CaseStudy() {
       </div>
 
       <CaseStudySection title="The Challenge" body={caseStudy.challenge} />
-      <CaseStudySection title="Product Need" body={caseStudy.need} />
+      <CaseStudySection title="The Task" body={caseStudy.task} />
       <CaseStudySection title="My Contribution" body={caseStudy.contribution} />
       <CaseStudySection title="Result" body={caseStudy.result} />
 

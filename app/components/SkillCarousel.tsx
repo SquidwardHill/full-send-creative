@@ -9,8 +9,7 @@ interface SkillCarouselProps {
 }
 
 export default function SkillCarousel({ skills, speed = 20 }: SkillCarouselProps) {
-  // Duplicate the list so it scrolls seamlessly
-  const doubledSkills = [...skills, ...skills];
+  const repeatedSkills = [...skills, ...skills, ...skills, ...skills];
 
   return (
     <div className="relative w-full overflow-hidden">
@@ -20,17 +19,17 @@ export default function SkillCarousel({ skills, speed = 20 }: SkillCarouselProps
 
       {/* Scrolling track */}
       <div
-        className="flex animate-scroll gap-12 px-[10%]" // padding matches fade width so items fade out at edges
+        className="flex animate-scroll gap-8 md:gap-12 px-[10%]"
         style={{
           animationDuration: `${speed}s`,
         }}
       >
-        {doubledSkills.map((skill, idx) => (
+        {repeatedSkills.map((skill, idx) => (
           <div key={idx} className="flex items-center text-bubblegum-500 min-w-[15%] shrink-0">
             <div className="w-8 h-8 flex items-center justify-center">
               <SkillIcon name={skill.icon as any} />
             </div>
-            <span className="ml-3 text-md tracking-wide">{skill.name}</span>
+            <span className="ml-1 md:ml-3 text-md tracking-wide">{skill.name}</span>
           </div>
         ))}
       </div>
