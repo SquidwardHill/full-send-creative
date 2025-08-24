@@ -8,8 +8,8 @@
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-serif: "Google Sans Code", "Space Mono", "ui-serif", "Georgia", serif;
   --font-mono:
-    "Google Sans Code", "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-    "Courier New", monospace;
+    "Google Sans Code", "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   --font-accent: "Yarnings 20", sans-serif;
 
   --color-abyss: #0f0d13;
@@ -48,7 +48,8 @@
 
 /* Keyframes for animations - must be outside @theme block */
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.9;
     -webkit-transform: scale(1);
     transform: scale(1);
@@ -59,7 +60,8 @@
 }
 
 @-webkit-keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.9;
     -webkit-transform: scale(1);
   }
