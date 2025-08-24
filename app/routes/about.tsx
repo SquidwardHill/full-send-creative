@@ -1,7 +1,7 @@
 import { GlitchImage } from "~/components/GlitchImage.js";
 import {
-  coffinRed,
   coffinBlue,
+  coffinPink,
   sydneyCollageDesktop,
   sydneyCollageMobile,
 } from "~/utils/images.js";
@@ -13,17 +13,17 @@ export default function About() {
         <div className="max-w-[400px] md:max-w-screen-md mx-auto grid grid-cols-1 md:grid-cols-6 md:gap-8">
           <div className="md:col-span-2  mx-auto md:mx-0">
             <GlitchImage
-              srcTop={coffinRed}
+              srcTop={coffinPink}
               srcBottom={coffinBlue}
               alt="Sydney Hill"
               className="w-48 h-48 md:w-56 md:h-56"
             />
           </div>
           <div className="md:col-span-4 ">
-            <h4 className="text-bubblegum-400 text-xl font-semibold tracking-wider mb-6 md:mt-8">
+            <p className="text-bubblegum-400 text-base uppercase italic font-light tracking-wider mb-4 md:mt-8">
               I'm Sydney-
-            </h4>
-            <p className="text-cream-200 text-md">
+            </p>
+            <p className="text-cream-200 text-md font-light">
               I'm a designer and full-stack developer who thrives on blending creativity, logic, and
               intuition. Whether shaping interfaces or engineering seamless functionality, my magic
               lies in transforming ideas into thoughtfully crafted experiences.

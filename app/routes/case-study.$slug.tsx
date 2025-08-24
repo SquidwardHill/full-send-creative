@@ -6,6 +6,7 @@ import SkillStackSection from "../components/case-study/SkillStackSection.js";
 import type { SkillArea, Tool } from "@prisma/client";
 import { json } from "@remix-run/node";
 import { prisma } from "~/utils/db.server.js";
+import SectionTitleDivider from "~/components/typography/SectionTitleDivider.js";
 
 // Placeholder image for case studies without a cover image
 const coverPlaceholder = "/images/cover-placeholder.jpg";
@@ -82,13 +83,12 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
     .filter((img: { type: string }) => img.type === "PROCESS")
     .map((img: { url: string }) => img.url);
 
-  // fetch 2 "related" case studies (placeholder logic)
   const related = await prisma.caseStudy.findMany({
     where: {
       slug: { not: slug },
       active: true,
+      showcase: true,
     },
-    take: 2,
     include: {
       images: {
         where: { type: "COVER" },
@@ -119,17 +119,6 @@ export default function CaseStudy() {
 
   return (
     <div className="container mx-auto max-w-screen-lg pt-8 ">
-      {/* Return Home Link */}
-      {/* <div className="mb-8">
-        <Link
-          to="/"
-          className="text-md tracking-wide text-bubblegum-500 hover:text-pink-100 transition-colors underline underline-offset-4"
-        >
-          Browse More
-        </Link>
-      </div> */}
-
-      {/*bg-glitch bg-cover bg-center  */}
       <div className="mb-8">
         <div className="flex flex-col md:flex-row gap-12">
           <div className="flex-5">
@@ -148,47 +137,48 @@ export default function CaseStudy() {
       </div>
 
       {/* TLDR + Body Sections */}
-
-      <div className="flex flex-row items-center gap-8">
-        <div className="flex">
-          <h4 className="text-2xl font-bold text-cream-100 tracking-wide w-full">In Depth</h4>
-        </div>
-        <div className="bg-gradient-to-r from-bubblegum-500 to-pink-300 h-0.5 flex-1"></div>
-      </div>
-
+      <SectionTitleDivider title="In Depth" />
       <CaseStudySection title="The Challenge" body={caseStudy.challenge} />
       <CaseStudySection title="The Task" body={caseStudy.task} />
       <CaseStudySection title="My Contribution" body={caseStudy.contribution} />
       <CaseStudySection title="Result" body={caseStudy.result} />
-
-      {/* Tech Stack Section (stubbed) */}
       <SkillStackSection skills={caseStudy.skills} />
 
       {/* Process Images */}
       <section className="py-12">
         <h4 className="text-2xl font-bold text-cream-100 mb-8 tracking-wide">Process Images</h4>
-        <div className="flex overflow-x-auto space-x-4 py-8">
-          {caseStudy.processImages.map((image: string, index: number) => (
-            <div key={index}>
-              <img src={image} alt={`Process ${index}`} className="h-48 w-auto rounded-md" />
-            </div>
-          ))}
-        </div>
+        {caseStudy.processImages.length > 0 ? (
+          <div className="flex overflow-x-auto space-x-4 py-8">
+            {caseStudy.processImages.map((image: string, index: number) => (
+              <div key={index}>
+                <img src={image} alt={`Process ${index}`} className="h-48 w-auto rounded-md" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-16">
+            <p className="text-cream-200 text-lg opacity-75">Coming soon.</p>
+          </div>
+        )}
       </section>
 
       {/* Related Case Studies */}
       {related.length > 0 && (
         <section className="py-8 mb-8">
-          <h4 className="text-2xl font-bold text-cream-100 mb-8 tracking-wide">Browse Others</h4>
+          <div className="flex flex-row items-center gap-8  mb-8">
+            <div className="flex">
+              <h3 className=" text-cream-100 tracking-wide w-full">Browse Others</h3>
+            </div>
+            <div className="bg-gradient-to-r from-bubblegum-500 to-pink-300 h-0.5 flex-1"></div>
+          </div>
+
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {related.map((item: RelatedCaseStudy) => (
               <Link key={item.slug} to={`/case-studies/${item.slug}`}>
                 <div className="mb-4">
                   <img src={item.cover} alt={item.title} className="w-full h-full object-cover" />
                 </div>
-                <h5 className="text-sm font-sans uppercase font-extralight tracking-wider text-cream-100 group-hover:text-pink-300">
-                  {item.hook}
-                </h5>
+                <p className=" text-cream-100 group-hover:text-pink-300">{item.hook}</p>
               </Link>
             ))}
           </div>

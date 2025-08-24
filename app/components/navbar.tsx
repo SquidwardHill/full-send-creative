@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link, useLocation, useNavigation } from "@remix-run/react";
-import { logo } from "~/utils/images.js";
+import { logo, CatPaw } from "~/utils/images.js";
 import SocialIcon from "./SocialIcon.js";
 import quickLinksData from "~/data/quick-links.json" with { type: "json" };
 import type { QuickLink } from "../types/navigation.js";
+import { FaPaw } from "react-icons/fa";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
@@ -45,7 +46,7 @@ export default function Navbar() {
                   to={item.to}
                   className={`p-4 font-light font-mono text-sm tracking-wide m-2 cursor-pointer duration-300 transition-all ${
                     isActive
-                      ? "text-bubblegum-300 border-b-2 border-bubblegum-300"
+                      ? "text-bubblegum-300 border-b-1 border-bubblegum-300"
                       : isCurrentLoading
                         ? "text-cream-200 opacity-50"
                         : "text-cream-100 hover:text-cream-300 hover:scale-105"
@@ -53,7 +54,9 @@ export default function Navbar() {
                 >
                   {item.label}
                   {isActive && (
-                    <span className="ml-2 inline-block w-2 h-2 bg-bubblegum-300 rounded-full animate-pulse"></span>
+                    <span className="ml-2 inline-block align-middle w-4 h-4 animate-pulse text-bubblegum-400">
+                      <FaPaw />
+                    </span>
                   )}
                 </Link>
               );
@@ -120,7 +123,9 @@ export default function Navbar() {
                 >
                   {item.label}
                   {isActive && (
-                    <span className="ml-2 inline-block w-2 h-2 bg-bubblegum-300 rounded-full animate-pulse"></span>
+                    <span className="ml-2 inline-block align-middle w-4 h-4 animate-pulse text-bubblegum-400">
+                      <FaPaw />
+                    </span>
                   )}
                 </Link>
               );

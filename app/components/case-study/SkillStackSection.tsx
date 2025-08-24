@@ -36,7 +36,7 @@ export default function SkillStackSection({ skills }: Props) {
 
   return (
     <section className="my-10">
-      <h4 className="text-2xl font-bold text-cream-100 mb-8 tracking-wide">TOOLS AND TECH STACK</h4>
+      <h4 className="text-2xl font-bold text-cream-100 mb-8 tracking-wide">Tools and Tech Stack</h4>
       <div className="space-y-6">
         {Object.entries(grouped).map(([area, tools]) => (
           <div key={area} className="grid grid-cols-10 gap-2 items-start">

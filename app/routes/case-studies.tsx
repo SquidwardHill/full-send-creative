@@ -1,5 +1,5 @@
 import type { MetaFunction } from "@vercel/remix";
-import { handRed, handBlue } from "~/utils/images.js";
+import { handPink, handBlue } from "~/utils/images.js";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
 import { prisma } from "~/utils/db.server.js";
@@ -40,7 +40,7 @@ export default function Index() {
           <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-0">
             <div className="flex">
               <GlitchImage
-                srcTop={handRed}
+                srcTop={handPink}
                 srcBottom={handBlue}
                 alt="Hand Divider"
                 className="w-42 h-68"

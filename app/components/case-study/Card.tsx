@@ -1,3 +1,5 @@
+import { FaLongArrowAltRight } from "react-icons/fa";
+
 const CaseStudyCard = ({ cover, title, hook, contributor = "Designer, Developer" }) => (
   <div className="flex flex-col gap-4 p-4 border-1 border-bubblegum-300/0 hover:border-bubblegum-300/75 transition-all ease-in-out duration-400 rounded-sm h-full group">
     {/* Full-width image */}
@@ -21,7 +23,9 @@ const CaseStudyCard = ({ cover, title, hook, contributor = "Designer, Developer"
 
       {/* Icon column - appears on hover */}
       <div className="col-span-1 flex items-end justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <span className="text-bubblegum-400 text-xl">→</span>
+        <span className="text-bubblegum-400 ml-2 inline-block">
+          <FaLongArrowAltRight />
+        </span>
       </div>
     </div>
   </div>
