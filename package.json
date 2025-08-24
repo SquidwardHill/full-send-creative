@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "remix vite:build",
+    "postinstall": "prisma generate",
     "dev": "remix vite:dev",
     "typecheck": "tsc",
     "seed": "npx prisma generate && npx tsx scripts/importCaseStudies.ts",
