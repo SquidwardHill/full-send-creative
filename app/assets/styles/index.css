@@ -46,7 +46,8 @@
   --animate-fade-in: fade-in 0.7s ease-out forwards;
 
   @keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0.9;
       -webkit-transform: scale(1);
       transform: scale(1);
@@ -57,7 +58,8 @@
   }
 
   @-webkit-keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
       opacity: 0.9;
       -webkit-transform: scale(1);
     }

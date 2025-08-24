@@ -28,8 +28,12 @@
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
-  -webkit-transition: opacity 300ms ease-out, -webkit-transform 300ms ease-out;
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  -webkit-transition:
+    opacity 300ms ease-out,
+    -webkit-transform 300ms ease-out;
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
 }
 
 .page-exit {
@@ -42,8 +46,12 @@
   opacity: 0;
   -webkit-transform: translate3d(0, -20px, 0);
   transform: translate3d(0, -20px, 0);
-  -webkit-transition: opacity 300ms ease-in, -webkit-transform 300ms ease-in;
-  transition: opacity 300ms ease-in, transform 300ms ease-in;
+  -webkit-transition:
+    opacity 300ms ease-in,
+    -webkit-transform 300ms ease-in;
+  transition:
+    opacity 300ms ease-in,
+    transform 300ms ease-in;
 }
 
 /* Loading bar animation */
@@ -83,7 +91,7 @@ html {
     -webkit-animation: pulse 2s ease-in-out infinite;
     animation: pulse 2s ease-in-out infinite;
   }
-  
+
   /* Ensure transitions work on mobile */
   .transition-all,
   .duration-300,
@@ -92,7 +100,7 @@ html {
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
   }
-  
+
   /* Force hardware acceleration on mobile */
   .hover\:scale-105:hover,
   .hover\:scale-110:hover {
@@ -108,19 +116,19 @@ html {
     -webkit-animation: pulse 2s ease-in-out infinite !important;
     animation: pulse 2s ease-in-out infinite !important;
   }
-  
+
   .animate-loading-bar {
     -webkit-animation: loading-bar 1.5s ease-in-out infinite !important;
     animation: loading-bar 1.5s ease-in-out infinite !important;
   }
-  
+
   /* Force hardware acceleration on iOS */
   .transition-all,
   .duration-300 {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
   }
-  
+
   /* Ensure hover effects work on iOS */
   .hover\:scale-105:hover,
   .hover\:scale-110:hover {
