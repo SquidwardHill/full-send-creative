@@ -4,8 +4,8 @@
 
 @theme {
   --font-sans:
-    "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+    "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-serif: "Google Sans Mono", "ui-serif", "Georgia", serif;
   --font-mono:
     "Google Sans Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
@@ -67,6 +67,18 @@
     100%: {
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  @keyframes loading-bar {
+    0% {
+      width: 0%;
+    }
+    50% {
+      width: 70%;
+    }
+    100% {
+      width: 100%;
     }
   }
 }

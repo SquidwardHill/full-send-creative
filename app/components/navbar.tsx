@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
-import { Link } from "@remix-run/react";
+import { Link, useLocation, useNavigation } from "@remix-run/react";
 import { logo } from "~/utils/images.js";
 import SocialIcon from "./SocialIcon.js";
 import quickLinksData from "~/data/quick-links.json" with { type: "json" };
@@ -8,6 +8,9 @@ import type { QuickLink } from "../types/navigation.js";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
+  const location = useLocation();
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
 
   const handleNav = () => {
     setNav(!nav);
@@ -32,15 +35,29 @@ export default function Navbar() {
         <div>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center">
-            {navItems.map((item) => (
-              <Link
-                key={item.id}
-                to={item.to}
-                className="p-4 text-cream-100 hover:text-cream-300 font-light font-mono text-sm tracking-wide m-2 cursor-pointer duration-300"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.to;
+              const isCurrentLoading = isLoading && location.pathname !== item.to;
+
+              return (
+                <Link
+                  key={item.id}
+                  to={item.to}
+                  className={`p-4 font-light font-mono text-sm tracking-wide m-2 cursor-pointer duration-300 transition-all ${
+                    isActive
+                      ? "text-bubblegum-300 border-b-2 border-bubblegum-300"
+                      : isCurrentLoading
+                        ? "text-cream-200 opacity-50"
+                        : "text-cream-100 hover:text-cream-300 hover:scale-105"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="ml-2 inline-block w-2 h-2 bg-bubblegum-300 rounded-full animate-pulse"></span>
+                  )}
+                </Link>
+              );
+            })}
 
             {/* Social icons */}
             {socialItems.map((item) => (
@@ -49,7 +66,7 @@ export default function Navbar() {
                 href={item.to}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-4 text-cream-100 hover:text-cream-300 rounded-xl m-2 cursor-pointer duration-300"
+                className="p-4 text-cream-100 hover:text-cream-300 rounded-xl m-2 cursor-pointer duration-300 hover:scale-110 transition-transform"
               >
                 <SocialIcon name={item.icon as any} className="w-6 h-6" />
               </a>
@@ -87,16 +104,27 @@ export default function Navbar() {
           </div>
           <div className="py-4 flex flex-col">
             {/* Mobile Navigation Items */}
-            {navItems.map((item) => (
-              <Link
-                key={item.id}
-                to={item.to}
-                onClick={handleNav}
-                className="py-2 text-cream-200 hover:text-cream-300 duration-300 cursor-pointer"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = location.pathname === item.to;
+
+              return (
+                <Link
+                  key={item.id}
+                  to={item.to}
+                  onClick={handleNav}
+                  className={`py-2 duration-300 cursor-pointer transition-all ${
+                    isActive
+                      ? "text-bubblegum-300 border-l-4 border-bubblegum-300 pl-4"
+                      : "text-cream-200 hover:text-cream-300 hover:pl-6"
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="ml-2 inline-block w-2 h-2 bg-bubblegum-300 rounded-full animate-pulse"></span>
+                  )}
+                </Link>
+              );
+            })}
 
             <div className="flex gap-8 py-8">
               {/* Mobile Social Items */}
