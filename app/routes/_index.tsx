@@ -45,9 +45,9 @@ export default function Index() {
     <div>
       <section className="md:p-4 text-left max-w-screen-lg mx-auto bg-center md:mt-6">
         <div className="max-w-screen-lg mx-auto">
-          <div className="flex flex-col md:flex-row md:gap-12 md:mb-4 mr-8 md:mr-0 items-center">
-            <div className="relative md:w-1/2 p-4 md:p-0">
-              <img src={sydneyHill} alt="Sydney Hill" className="z-10 w-full p-8 md:p-12" />
+          <div className="flex flex-col md:flex-row md:gap-12 md:mb-4 items-center mr-2 md:mr-0">
+            <div className="relative md:w-1/2">
+              <img src={sydneyHill} alt="Sydney Hill" className="z-10 w-full p-8 mr-2" />
               <div className="absolute bottom-0 right-0 md:bottom-[-40px] md:right-[-40px] z-20">
                 <GlitchImage
                   srcTop={glitchCatPink}

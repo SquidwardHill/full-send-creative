@@ -35,15 +35,15 @@ export default function Index() {
 
   return (
     <div>
-      <section className="p-4 text-center max-w-screen-lg mx-auto bg-center mt-6">
+      <section className="p-4 text-center max-w-screen-lg mx-auto bg-center md:mt-6">
         <div className="max-w-screen-lg mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end gap-8 md:gap-0">
+          <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-0">
             <div className="flex">
               <GlitchImage
                 srcTop={handPink}
                 srcBottom={handBlue}
                 alt="Hand Divider"
-                className="w-42 h-68"
+                className="w-32 h-48 md:w-42 md:h-68"
               />
             </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-left md:items-end pb-4">

@@ -27,8 +27,8 @@ export default function Navbar() {
   ) as QuickLink[];
 
   return (
-    <div>
-      <div className="relative z-10 flex justify-between items-center max-w-screen-lg mx-auto h-full px-4 py-4">
+    <div className="relative z-[9998]">
+      <div className="relative z-[9998] flex justify-between items-center max-w-screen-lg mx-auto h-full px-4 py-4">
         <Link to="/" className="w-32 py-4">
           <img src={logo} alt="Black Cat Logo" />
         </Link>
@@ -84,12 +84,16 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Navigation Menu */}
-      <div className={nav ? "md:hidden fixed left-0 top-0 w-full h-screen  z-50" : ""}>
+      <div
+        className={nav ? "md:hidden fixed left-0 top-0 w-full h-screen z-[9999] bg-galaxy/20" : ""}
+      >
+        {/* Full screen backdrop */}
+        {nav && <div className="fixed inset-0 bg-black/50 z-[9998]" onClick={handleNav} />}
         <div
           className={
             nav
-              ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-galaxy p-10 ease-in duration-500 z-50 shadow-lg shadow-black/50"
-              : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
+              ? "absolute left-0 top-0 w-[85%] sm:w-[75%] md:w-[45%] h-screen bg-galaxy p-6 ease-in duration-500 z-[9999]"
+              : "absolute left-[-100%] top-0 p-6 ease-in duration-500 z-[9999] bg-galaxy"
           }
         >
           <div>

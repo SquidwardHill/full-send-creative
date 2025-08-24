@@ -4,7 +4,7 @@ import "~/assets/styles/animations/glitch.css";
 interface GlitchImageProps {
   srcTop: string;
   srcBottom: string;
-  srcDecorator?: string; 
+  srcDecorator?: string;
   alt?: string;
   className?: string;
 }
@@ -50,7 +50,7 @@ export function GlitchImage({
         <img
           src={srcDecorator}
           alt="Decorator"
-          className="absolute top-0 left-0 z-10 animate-pulse-subtle"
+          className="absolute top-0 left-0 z-20 animate-pulse-subtle"
         />
       )}
 
@@ -59,7 +59,7 @@ export function GlitchImage({
         src={srcTop}
         alt=""
         aria-hidden
-        className="absolute top-1 left-1 z-1 glitch-1 w-full h-full p-4"
+        className="absolute top-1 left-1 z-10 glitch-1 w-full h-full p-4"
       />
 
       {/* Blue-shifted glitch layer */}

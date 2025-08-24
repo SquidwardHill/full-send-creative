@@ -48,14 +48,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <main className="bg-galaxy font-serif text-cream-200 dark:bg-galaxy dark:text-cream-200 relative overflow-x-hidden">
-          {/* <img
-            src={heroBgGradient}
-            alt="gradient background"
-            className="w-full h-screen-1/2 absolute top-0 mx-auto bg-cover z-0"
-          /> */}
-
-          {/* Loading indicator */}
+        <main className="bg-galaxy font-serif text-cream-200 dark:bg-galaxy dark:text-cream-200 overflow-x-hidden">
           {isLoading && (
             <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-bubblegum-300 to-bubblegum-500 z-50 animate-pulse">
               <div className="h-full bg-gradient-to-r from-bubblegum-300 to-bubblegum-500 animate-loading-bar"></div>
@@ -63,7 +56,7 @@ export default function App() {
           )}
 
           <Navbar />
-          <div className="p-4 max-w-screen-xl mx-auto">
+          <div className="p-4 max-w-screen-xl mx-auto relative z-0">
             <PageTransition>
               <Outlet />
             </PageTransition>
