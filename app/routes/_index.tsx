@@ -58,7 +58,7 @@ export default function Index() {
               </div>
             </div>
             <div className="px-4 md:px-0 md:w-1/2">
-              <span className="bg-gradient-to-r from-bubblegum-500 to-red-500 bg-clip-text text-transparent font-bold leading-tight md:mt-4 text-sm md:text-base">
+              <span className="bg-gradient-to-r from-bubblegum-500 to-red-500 bg-clip-text text-transparent font-normal leading-tight md:mt-4 text-sm md:text-base">
                 Sydney Hill → Designer & Developer
               </span>
               <h1 className="lg:text-[42px] text-cream-100 font-bold leading-tight mt-4">

@@ -6,9 +6,9 @@
   --font-sans:
     "Space Grotesk", "ui-sans-serif", "system-ui", "sans-serif", "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: "Google Sans Mono", "ui-serif", "Georgia", serif;
+  --font-serif: "Google Sans Code", "Space Mono", "ui-serif", "Georgia", serif;
   --font-mono:
-    "Google Sans Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Google Sans Code", "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
     "Courier New", monospace;
   --font-accent: "Yarnings 20", sans-serif;
 
@@ -44,85 +44,84 @@
   --animate-sparkle: pulse 2s ease-in-out;
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-fade-in: fade-in 0.7s ease-out forwards;
+}
 
-  @keyframes pulse {
-    0%,
-    100% {
-      opacity: 0.9;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-    }
+/* Keyframes for animations - must be outside @theme block */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.9;
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
-
-  @-webkit-keyframes pulse {
-    0%,
-    100% {
-      opacity: 0.9;
-      -webkit-transform: scale(1);
-    }
-    50% {
-      opacity: 1;
-    }
+  50% {
+    opacity: 1;
   }
+}
 
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-      -webkit-transform: scale(0.9);
-      transform: scale(0.9);
-    }
-    50% {
-      opacity: 0.5;
-      -webkit-transform: scale(1.02);
-      transform: scale(1.02);
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
+@-webkit-keyframes pulse {
+  0%, 100% {
+    opacity: 0.9;
+    -webkit-transform: scale(1);
   }
-
-  @-webkit-keyframes fade-in {
-    0% {
-      opacity: 0;
-      -webkit-transform: scale(0.9);
-    }
-    50% {
-      opacity: 0.5;
-      -webkit-transform: scale(1.02);
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: scale(1);
-    }
+  50% {
+    opacity: 1;
   }
+}
 
-  @keyframes loading-bar {
-    0% {
-      width: 0%;
-    }
-    50% {
-      width: 70%;
-    }
-    100% {
-      width: 100%;
-    }
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
   }
+  50% {
+    opacity: 0.5;
+    -webkit-transform: scale(1.02);
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
 
-  @-webkit-keyframes loading-bar {
-    0% {
-      width: 0%;
-    }
-    50% {
-      width: 70%;
-    }
-    100% {
-      width: 100%;
-    }
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.5;
+    -webkit-transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes loading-bar {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
   }
 }
 
