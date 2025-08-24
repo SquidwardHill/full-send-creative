@@ -46,31 +46,72 @@
   --animate-fade-in: fade-in 0.7s ease-out forwards;
 
   @keyframes pulse {
-    0%, 100%: {
+    0%, 100% {
       opacity: 0.9;
+      -webkit-transform: scale(1);
       transform: scale(1);
     }
-    50%: {
+    50% {
       opacity: 1;
     }
   }
 
-  @keyframes fade-in: {
-    0%: {
+  @-webkit-keyframes pulse {
+    0%, 100% {
+      opacity: 0.9;
+      -webkit-transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-in {
+    0% {
       opacity: 0;
+      -webkit-transform: scale(0.9);
       transform: scale(0.9);
     }
-    50%: {
+    50% {
       opacity: 0.5;
+      -webkit-transform: scale(1.02);
       transform: scale(1.02);
     }
-    100%: {
+    100% {
       opacity: 1;
+      -webkit-transform: scale(1);
       transform: scale(1);
+    }
+  }
+
+  @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+      -webkit-transform: scale(0.9);
+    }
+    50% {
+      opacity: 0.5;
+      -webkit-transform: scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: scale(1);
     }
   }
 
   @keyframes loading-bar {
+    0% {
+      width: 0%;
+    }
+    50% {
+      width: 70%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  @-webkit-keyframes loading-bar {
     0% {
       width: 0%;
     }
