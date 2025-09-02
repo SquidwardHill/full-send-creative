@@ -29,7 +29,9 @@ model CaseStudy {
   themeColor   String @default("purple-pizzazz-500")
 
   skills        CaseStudySkill[]
-  images Image[]
+  images        Image[]
+  persona      UserPersona?
+  userStory    UserStory?
   
   active        Boolean @default(true)
   showcase      Boolean @default(false)
@@ -89,4 +91,91 @@ model Image {
 enum ImageType {
   COVER
   PROCESS
+}
+
+// User Persona model for case studies
+model UserPersona {
+  id          String @id @default(cuid())
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id])
+  caseStudyId String @unique
+
+  // Basic Information
+  name        String
+  role        String
+  company     String?
+  industry    String?
+  avatar      String?
+  
+  // User Research
+  painPoints  String[]
+  goals       String[]
+  frustrations String[]
+  
+  // Demographics
+  age         String?
+  experience  String?
+  teamSize    String?
+  location    String?
+  
+  // Additional Context
+  techStack   String[]
+  dailyTasks  String[]
+  decisionFactors String[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// User Story model for case studies
+model UserStory {
+  id          String @id @default(cuid())
+  caseStudy   CaseStudy @relation(fields: [caseStudyId], references: [id])
+  caseStudyId String @unique
+
+  // Story Structure
+  title       String
+  description String @db.Text
+  
+  // User Journey
+  asA         String // "As a [user type]"
+  iWant       String // "I want to [goal]"
+  soThat      String // "So that [benefit]"
+  
+  // Acceptance Criteria
+  acceptanceCriteria String[]
+  
+  // Story Details
+  priority    StoryPriority @default(MEDIUM)
+  complexity  StoryComplexity @default(MEDIUM)
+  status      StoryStatus @default(TODO)
+  
+  // Additional Context
+  assumptions String[]
+  dependencies String[]
+  notes       String @db.Text?
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum StoryPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum StoryComplexity {
+  LOW
+  MEDIUM
+  HIGH
+  EXTREME
+}
+
+enum StoryStatus {
+  TODO
+  IN_PROGRESS
+  REVIEW
+  DONE
+  BLOCKED
 }
