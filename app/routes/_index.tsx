@@ -14,7 +14,7 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Black Cat Creative" },
+    { title: "The Black Cat" },
     { name: "description", content: "Welcome to Sydney Hill's MySpace" },
   ];
 };

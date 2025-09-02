@@ -3,6 +3,7 @@ import type { LoaderFunctionArgs } from "@remix-run/node";
 import Label from "../components/typography/Label.js";
 import CaseStudySection from "../components/case-study/Section.js";
 import SkillStackSection from "../components/case-study/SkillStackSection.js";
+import MeetUserSidebar from "~/components/MeetUserSidebar.js";
 import type { SkillArea, Tool } from "@prisma/client";
 import { json } from "@remix-run/node";
 import { prisma } from "~/utils/db.server.js";
@@ -174,7 +175,7 @@ export default function CaseStudy() {
 
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {related.map((item: RelatedCaseStudy) => (
-              <Link key={item.slug} to={`/case-studies/${item.slug}`}>
+              <Link key={item.slug} to={`/case-study/${item.slug}`}>
                 <div className="mb-4">
                   <img src={item.cover} alt={item.title} className="w-full h-full object-cover" />
                 </div>
@@ -184,6 +185,16 @@ export default function CaseStudy() {
           </div>
         </section>
       )}
+
+      {/* Todo: Flesh out User Persona Sidebar */}
+      {/* <MeetUserSidebar
+        caseStudyData={{
+          title: caseStudy.title,
+          challenge: caseStudy.challenge,
+          task: caseStudy.task,
+          result: caseStudy.result,
+        }}
+      /> */}
     </div>
   );
 }

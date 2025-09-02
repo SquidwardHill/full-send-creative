@@ -10,7 +10,7 @@ export default function About() {
   return (
     <div>
       <section className="text-left max-w-screen-lg mx-auto md:py-8">
-        <div className="max-w-[400px] md:max-w-screen-md mx-auto grid grid-cols-1 md:grid-cols-6 md:gap-8 mr-8">
+        <div className="max-w-[400px] md:max-w-screen-md grid grid-cols-1 md:grid-cols-6 md:gap-8 mr-8 md:mx-auto">
           <div className="md:col-span-2 ">
             <GlitchImage
               srcTop={coffinPink}

@@ -43,7 +43,7 @@ export default function Index() {
                 srcTop={handPink}
                 srcBottom={handBlue}
                 alt="Hand Divider"
-                className="w-32 h-48 md:w-42 md:h-68"
+                className="w-32 h-42 md:w-42 md:h-62"
               />
             </div>
             <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-left md:items-end pb-4">

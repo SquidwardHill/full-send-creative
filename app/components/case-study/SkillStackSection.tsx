@@ -1,5 +1,6 @@
 import type { SkillArea, Tool } from "@prisma/client";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import { PiArrowElbowDownRightFill } from "react-icons/pi";
 
 export interface CaseStudySkill {
   area: SkillArea;
@@ -40,17 +41,22 @@ export default function SkillStackSection({ skills }: Props) {
       <div className="space-y-6">
         {Object.entries(grouped).map(([area, tools]) => (
           <div key={area} className="grid grid-cols-10 gap-2 items-start">
-            <h5 className="col-span-2 text-cream-200 font-bold">
+            <h5 className="col-span-10 md:col-span-2 text-cream-200 font-bold">
               {skillAreaLabels[area as SkillArea]}
             </h5>
-            <div className="col-span-8 flex flex-wrap gap-2 items-center">
-              <FaLongArrowAltRight className="text-bubblegum-400 mr-2" />
-              {tools.map((tool) => (
-                <span key={tool.id} className="text-cream-200 text-base font-light">
-                  {tool.name}
-                  {tools.indexOf(tool) < tools.length - 1 && ","}
-                </span>
-              ))}
+            <div className="col-span-10 md:col-span-8 items-center flex gap-4">
+              <div>
+                <PiArrowElbowDownRightFill className="text-bubblegum-400 inline-block md:hidden flex-col" />
+                <FaLongArrowAltRight className="text-bubblegum-400 mr-2 hidden md:inline-block" />
+              </div>
+              <div className="flex flex-wrap gap-2 ">
+                {tools.map((tool) => (
+                  <span key={tool.id} className="text-cream-200 text-base font-light">
+                    {tool.name}
+                    {tools.indexOf(tool) < tools.length - 1 && ","}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         ))}

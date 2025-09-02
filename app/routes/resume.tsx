@@ -1,7 +1,10 @@
+import ResumeSection from "~/components/ResumeSection.js";
+import SectionTitleDivider from "~/components/typography/SectionTitleDivider.js";
+
 export default function Resume() {
   return (
     <div>
-      <section id="resume" className="max-w-5xl mx-auto px-6 py-16">
+      <section id="resume" className="max-w-5xl mx-auto px-6 pb-16 md:pt-16">
         <header className="mb-16 text-center">
           <h2 className="text-4xl font-extrabold text-cream-100">
             Product Design &amp; Full Stack Engineering
@@ -18,111 +21,54 @@ export default function Resume() {
         </header>
 
         <section>
-          <h3 className="text-2xl font-semibold text-cream-100 mb-8">Work Experience</h3>
-          <div className="space-y-12">
-            <article className="grid md:grid-cols-4 gap-6">
-              <div className="md:col-span-1">
-                <p className="font-bold text-cream-100">
-                  <a
-                    href="http://PassiveInvesting.com"
-                    target="_blank"
-                    rel="noopener"
-                    className="hover:underline"
-                  >
-                    PassiveInvesting.com
-                  </a>
-                </p>
-                <p className="text-sm text-cream-200">Nov 2023 – Sep 2024</p>
-              </div>
-              <div className="md:col-span-3">
-                <h4 className="font-semibold text-lg text-cream-100">
-                  Senior Software Engineer &amp; Designer
-                </h4>
-                <ul className="list-disc list-inside mt-2 space-y-1 text-cream-200">
-                  <li>
-                    Built frontend of <strong>Vue.js + Capacitor</strong> app in{" "}
-                    <strong>7 months</strong>
-                  </li>
-                  <li>
-                    Collaborated with backend engineers to design and develop internal REST API
-                  </li>
-                  <li>
-                    Created frontend test suite with <strong>Pinia + Jest</strong>
-                  </li>
-                </ul>
-              </div>
-            </article>
+          <SectionTitleDivider title="Work Experience" />
+          <div className="space-y-12 mt-8 md:mt-12">
+            <ResumeSection
+              company="PassiveInvesting.com"
+              title="Senior Software Engineer &amp; Designer"
+              dates="Nov 2023 – Sep 2024"
+              bullets={[
+                "Built frontend of Vue.js + Capacitor app in 7 months",
+                "Collaborated with backend engineers to design and develop internal REST API",
+                "Created frontend test suite with Pinia + Jest",
+              ]}
+            />
 
-            <article className="grid md:grid-cols-4 gap-6">
-              <div className="md:col-span-1">
-                <p className="font-bold text-cream-100">ComplYant</p>
-                <p className="text-sm text-cream-200">Jan 2022 – Oct 2023</p>
-              </div>
-              <div className="md:col-span-3">
-                <h4 className="font-semibold text-lg text-cream-100">
-                  Full Stack Software Engineer
-                </h4>
-                <ul className="list-disc list-inside mt-2 space-y-1 text-cream-200">
-                  <li>
-                    Launched company’s <strong>first design library</strong>
-                  </li>
-                  <li>
-                    Cut dev cycles by building <strong>Figma prototypes</strong> for reviews +
-                    testing
-                  </li>
-                  <li>
-                    Proved expense tracking feature viability in <strong>5 days</strong> via design
-                    sprint
-                  </li>
-                  <li>
-                    Shipped IRS 4868 filing tool in <strong>4 months</strong> (backend + frontend)
-                  </li>
-                  <li>Developed client-side REST API integrations with external vendors</li>
-                  <li>Mapped features with ERDs and flowcharts for cross-team clarity</li>
-                </ul>
-              </div>
-            </article>
+            <ResumeSection
+              company="ComplYant"
+              title="Full Stack Software Engineer"
+              dates="Jan 2022 – Oct 2023"
+              bullets={[
+                "Launched company’s first design library",
+                "Cut dev cycles by building Figma prototypes for reviews + testing",
+                "Proved expense tracking feature viability in 5 days via design sprint",
+                "Shipped IRS 4868 filing tool in 4 months (backend + frontend)",
+                "Developed client-side REST API integrations with external vendors",
+                "Mapped features with ERDs and flowcharts for cross-team clarity",
+              ]}
+            />
 
-            <article className="grid md:grid-cols-4 gap-6">
-              <div className="md:col-span-1">
-                <p className="font-bold text-cream-100">Right Start Data</p>
-                <p className="text-sm text-cream-200">Jan 2020 – Dec 2021</p>
-              </div>
-              <div className="md:col-span-3">
-                <h4 className="font-semibold text-lg text-cream-100">Designer &amp; Developer</h4>
-                <ul className="list-disc list-inside mt-2 space-y-1 text-cream-200">
-                  <li>
-                    Improved dev efficiency with detailed user flow designs (happy/unhappy paths)
-                  </li>
-                  <li>
-                    Expanded skills by building in <strong>React Native + Laravel</strong>
-                  </li>
-                  <li>
-                    Drove <strong>300% sales increase</strong> via subscription + marketing platform
-                  </li>
-                </ul>
-              </div>
-            </article>
+            <ResumeSection
+              company="Right Start Data"
+              title="Designer &amp; Developer"
+              dates="Jan 2020 – Dec 2021"
+              bullets={[
+                "Improved dev efficiency with detailed user flow designs (happy/unhappy paths)",
+                "Expanded skills by building in React Native + Laravel",
+                "Drove 300% sales increase via subscription + marketing platform",
+              ]}
+            />
 
-            <article className="grid md:grid-cols-4 gap-6">
-              <div className="md:col-span-1">
-                <p className="font-bold text-cream-100">Self Employed</p>
-                <p className="text-sm text-cream-200">Sep 2018 – Jan 2022</p>
-              </div>
-              <div className="md:col-span-3">
-                <h4 className="font-semibold text-lg text-cream-100">Designer &amp; Developer</h4>
-                <ul className="list-disc list-inside mt-2 space-y-1 text-cream-200">
-                  <li>
-                    Maintained <strong>100% Job Success Rate</strong> on Upwork
-                  </li>
-                  <li>
-                    Earned <strong>$20K on Upwork</strong> ($70K+ total) in first year of
-                    freelancing
-                  </li>
-                  <li>Proven ability to work independently and deliver on time</li>
-                </ul>
-              </div>
-            </article>
+            <ResumeSection
+              company="Self Employed"
+              title="Designer &amp; Developer"
+              dates="Sep 2018 – Jan 2022"
+              bullets={[
+                "Maintained 100% Job Success Rate on Upwork",
+                "Earned $20K on Upwork ($70K+ total) in first year of freelancing",
+                "Proven ability to work independently and deliver on time",
+              ]}
+            />
           </div>
         </section>
       </section>
