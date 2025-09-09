@@ -150,9 +150,9 @@ model UserStory {
   status      StoryStatus @default(TODO)
   
   // Additional Context
-  assumptions String[]
-  dependencies String[]
-  notes       String @db.Text?
+  assumptions Json?
+  dependencies Json?
+  notes       String?
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
