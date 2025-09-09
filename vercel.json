@@ -1,10 +1,15 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "npm run build && npm run seed",
   "outputDirectory": "build",
   "framework": "remix",
   "installCommand": "npm install",
   "devCommand": "npm run dev",
   "env": {
     "PRISMA_GENERATE_DATAPROXY": "true"
+  },
+  "build": {
+    "env": {
+      "SKIP_SEED": "false"
+    }
   }
 }

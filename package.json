@@ -6,14 +6,16 @@
   ],
   "type": "module",
   "prisma": {
-    "seed": "npx tsx scripts/importCaseStudies.ts"
+    "seed": "npx tsx scripts/conditionalSeed.ts"
   },
   "scripts": {
     "build": "remix vite:build",
     "postinstall": "prisma generate",
     "dev": "remix vite:dev",
     "typecheck": "tsc",
-    "seed": "npx prisma generate && npx tsx scripts/importCaseStudies.ts",
+    "seed": "npx prisma generate && npx tsx scripts/conditionalSeed.ts",
+    "seed:force": "npx prisma generate && FORCE_SEED=true npx tsx scripts/importCaseStudies.ts",
+    "seed:skip": "npx prisma generate && SKIP_SEED=true npx tsx scripts/conditionalSeed.ts",
     "migrate": "./scripts/build.sh",
     "clearCache": "rm -rf node_modules && rm -rf prisma/node_modules && npm i",
     "inspect": "npx prisma studio",
@@ -24,6 +26,7 @@
   },
   "dependencies": {
     "@iconify/react": "^6.0.0",
+    "@prisma/client": "^6.8.2",
     "@remix-run/node": "2.10.0",
     "@remix-run/react": "2.10.0",
     "@remix-run/server-runtime": "2.10.0",
@@ -33,14 +36,15 @@
     "@vercel/remix": "2.10.0",
     "date-fns": "^4.1.0",
     "isbot": "^4",
+    "prisma": "^6.7.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "tsx": "^4.19.4"
   },
   "devDependencies": {
-    "@prisma/client": "^6.8.2",
     "@remix-run/dev": "2.10.0",
     "@remix-run/eslint-config": "2.10.0",
     "@types/node": "^22.14.1",
@@ -50,10 +54,8 @@
     "concurrently": "^9.1.2",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "prisma": "^6.7.0",
     "tailwindcss": "^4.1.7",
     "ts-node": "^10.9.2",
-    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "vite": "^5.1.0",
     "vite-tsconfig-paths": "^4.2.1"
