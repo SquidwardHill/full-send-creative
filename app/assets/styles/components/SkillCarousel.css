@@ -5,3 +5,18 @@
 .fade-right {
   background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
+
+/* Hide scrollbars */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Smooth scrolling */
+.scrollbar-hide {
+  scroll-behavior: smooth;
+}
