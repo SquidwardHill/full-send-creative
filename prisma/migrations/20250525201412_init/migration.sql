@@ -26,7 +26,9 @@ CREATE TABLE "CaseStudy" (
 -- CreateTable
 CREATE TABLE "CaseStudySkill" (
     "id" TEXT NOT NULL,
-    "caseStudyId" TEXT NOT NULL,
+    "caseStudyId"
+    
+     TEXT NOT NULL,
     "toolId" TEXT NOT NULL,
     "area" "SkillArea" NOT NULL,
 
