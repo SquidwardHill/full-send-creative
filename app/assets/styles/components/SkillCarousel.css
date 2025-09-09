@@ -5,17 +5,3 @@
 .fade-right {
   background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
-
-/* Continuous scrolling animation */
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.animate-scroll {
-  animation: scroll linear infinite;
-}

@@ -27,6 +27,8 @@
     "@remix-run/node": "2.10.0",
     "@remix-run/react": "2.10.0",
     "@remix-run/server-runtime": "2.10.0",
+    "@splidejs/react-splide": "^0.7.12",
+    "@splidejs/splide-extension-auto-scroll": "^0.5.3",
     "@tailwindcss/cli": "^4.1.7",
     "@tailwindcss/vite": "^4.1.7",
     "@vercel/analytics": "^1.2.2",
