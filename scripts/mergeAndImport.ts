@@ -24,6 +24,7 @@ interface CaseStudyData {
   contribution: string;
   result: string;
   themeColor?: string;
+  roles?: string[];
   skills?: ToolingData;
 }
 
@@ -50,6 +51,7 @@ async function run() {
       contribution,
       result,
       themeColor,
+      roles,
       skills,
     } = cs;
 
@@ -70,6 +72,7 @@ async function run() {
         contribution,
         result,
         themeColor: themeColor ?? "purple-pizzazz-500",
+        roles: roles as any ?? ["FRONTEND_DEVELOPER"],
       },
       create: {
         slug,
@@ -82,6 +85,7 @@ async function run() {
         contribution,
         result,
         themeColor: themeColor ?? "purple-pizzazz-500",
+        roles: roles as any ?? ["FRONTEND_DEVELOPER"],
       },
     });
 

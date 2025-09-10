@@ -5,23 +5,33 @@ import { useLoaderData, Link } from "@remix-run/react";
 import { prisma } from "~/utils/db.server.js";
 import skillsData from "~/data/skills.json" with { type: "json" };
 import type { Skill } from "../types/skills.js";
+import type { ContributorRole } from "~/utils/roles.js";
 import { GlitchImage } from "~/components/GlitchImage.js";
 import CaseStudyCard from "~/components/case-study/Card.js";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Black Cat Creative" },
-    { name: "description", content: "Welcome to Sydney Hill's MySpace" },
+    { title: "The Black Cat: Case Studies" },
+    { name: "description", content: "Selected case studies by Sydney Hill" },
   ];
 };
 
 export async function loader({}: LoaderFunctionArgs) {
   const caseStudies = await prisma.caseStudy.findMany({
     orderBy: { createdAt: "desc" },
-    include: {
+    select: {
+      id: true,
+      title: true,
+      hook: true,
+      slug: true,
+      roles: true,
       images: {
         where: { type: "COVER" },
         take: 1,
+        select: {
+          url: true,
+          alt: true,
+        },
       },
     },
   });
@@ -67,6 +77,7 @@ export default function Index() {
               title: string;
               hook: string;
               slug: string;
+              roles: ContributorRole[];
             }) => {
               const cover = cs.images[0];
               if (!cover) return null;
@@ -77,7 +88,7 @@ export default function Index() {
                   to={`/case-study/${cs.slug}`}
                   className="group relative w-full overflow-hidden cursor-pointer"
                 >
-                  <CaseStudyCard cover={cover} title={cs.title} hook={cs.hook} />
+                  <CaseStudyCard cover={cover} title={cs.title} hook={cs.hook} roles={cs.roles} />
                 </Link>
               );
             }

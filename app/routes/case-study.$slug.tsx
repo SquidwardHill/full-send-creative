@@ -3,13 +3,11 @@ import type { LoaderFunctionArgs } from "@remix-run/node";
 import Label from "../components/typography/Label.js";
 import CaseStudySection from "../components/case-study/Section.js";
 import SkillStackSection from "../components/case-study/SkillStackSection.js";
-import MeetUserSidebar from "~/components/MeetUserSidebar.js";
 import type { SkillArea, Tool } from "@prisma/client";
 import { json } from "@remix-run/node";
 import { prisma } from "~/utils/db.server.js";
 import SectionTitleDivider from "~/components/typography/SectionTitleDivider.js";
 
-// Placeholder image for case studies without a cover image
 const coverPlaceholder = "/images/cover-placeholder.jpg";
 
 interface CaseStudySkill {
@@ -188,8 +186,8 @@ export default function CaseStudy() {
 
       {/* Todo: Flesh out User Persona Sidebar */}
       {/* <MeetUserSidebar
-        caseStudyData={{
-          title: caseStudy.title,
+        caseStudyPersonaData={{
+          user: caseStudy.persona.user,
           challenge: caseStudy.challenge,
           task: caseStudy.task,
           result: caseStudy.result,

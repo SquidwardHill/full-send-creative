@@ -20,13 +20,14 @@ model CaseStudy {
   slug          String @unique
   hook          String
   resumeSummary String
-  tldr          String @db.Text // HTML content
+  tldr          String @db.Text 
 
-  challenge    String @db.Text // HTML content
-  task         String @db.Text // HTML content
-  contribution String @db.Text // HTML content
-  result       String @db.Text // HTML content
+  challenge    String @db.Text 
+  task         String @db.Text 
+  contribution String @db.Text 
+  result       String @db.Text 
   themeColor   String @default("purple-pizzazz-500")
+  roles        ContributorRole[]
 
   skills        CaseStudySkill[]
   images        Image[]
@@ -178,4 +179,14 @@ enum StoryStatus {
   REVIEW
   DONE
   BLOCKED
+}
+
+enum ContributorRole {
+  DESIGNER
+  FRONTEND_LEAD
+  FRONTEND_DEVELOPER
+  BACKEND_DEVELOPER
+  FULL_STACK_DEVELOPER
+  TECHNICAL_LEAD
+  PRODUCT_STRATEGIST
 }
