@@ -185,14 +185,6 @@ export default function CaseStudy() {
       )}
 
       {/* Todo: Flesh out User Persona Sidebar */}
-      {/* <MeetUserSidebar
-        caseStudyPersonaData={{
-          user: caseStudy.persona.user,
-          challenge: caseStudy.challenge,
-          task: caseStudy.task,
-          result: caseStudy.result,
-        }}
-      /> */}
     </div>
   );
 }

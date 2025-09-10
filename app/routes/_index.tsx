@@ -11,6 +11,7 @@ import CaseStudyCard from "~/components/case-study/Card.js";
 import InlineLink from "~/components/typography/InlineLink.js";
 import SectionTitleDivider from "~/components/typography/SectionTitleDivider.js";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import type { ContributorRole } from "~/utils/roles.js";
 
 export const meta: MetaFunction = () => {
   return [
@@ -26,10 +27,19 @@ export async function loader({}: LoaderFunctionArgs) {
       showcase: true,
     },
     orderBy: { createdAt: "desc" },
-    include: {
+    select: {
+      id: true,
+      title: true,
+      hook: true,
+      slug: true,
+      roles: true,
       images: {
         where: { type: "COVER" },
         take: 1,
+        select: {
+          url: true,
+          alt: true,
+        },
       },
     },
   });
@@ -79,6 +89,7 @@ export default function Index() {
               title: string;
               hook: string;
               slug: string;
+              roles: ContributorRole[];
             }) => {
               const cover = cs.images[0];
               if (!cover) return null;
@@ -89,7 +100,7 @@ export default function Index() {
                   to={`/case-study/${cs.slug}`}
                   className="group relative w-full overflow-hidden cursor-pointer"
                 >
-                  <CaseStudyCard cover={cover} title={cs.title} hook={cs.hook} />
+                  <CaseStudyCard cover={cover} title={cs.title} hook={cs.hook} roles={cs.roles} />
                 </Link>
               );
             }

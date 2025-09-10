@@ -1,13 +1,13 @@
 import type { MetaFunction } from "@vercel/remix";
 import { handPink, handBlue } from "~/utils/images.js";
 import { json, LoaderFunctionArgs } from "@remix-run/node";
-import { useLoaderData, Link } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { prisma } from "~/utils/db.server.js";
 import skillsData from "~/data/skills.json" with { type: "json" };
 import type { Skill } from "../types/skills.js";
-import type { ContributorRole } from "~/utils/roles.js";
 import { GlitchImage } from "~/components/GlitchImage.js";
-import CaseStudyCard from "~/components/case-study/Card.js";
+import ShowCaseGrid from "~/components/case-study/ShowCaseGrid.js";
+import type { ContributorRole } from "~/utils/roles.js";
 
 export const meta: MetaFunction = () => {
   return [
@@ -68,33 +68,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="mt-8 md:mt-12 text-center max-w-screen-lg mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-2">
-          {caseStudies.map(
-            (cs: {
-              id: string;
-              images: Array<{ url: string; alt?: string | null }>;
-              title: string;
-              hook: string;
-              slug: string;
-              roles: ContributorRole[];
-            }) => {
-              const cover = cs.images[0];
-              if (!cover) return null;
-
-              return (
-                <Link
-                  key={cs.id}
-                  to={`/case-study/${cs.slug}`}
-                  className="group relative w-full overflow-hidden cursor-pointer"
-                >
-                  <CaseStudyCard cover={cover} title={cs.title} hook={cs.hook} roles={cs.roles} />
-                </Link>
-              );
-            }
-          )}
-        </div>
-      </section>
+      <ShowCaseGrid caseStudies={caseStudies} />
     </div>
   );
 }
