@@ -24,7 +24,7 @@ const CaseStudyCard = ({
     <div className="grid grid-cols-12 gap-4 flex-grow">
       <div className="col-span-11 text-left flex flex-col">
         <p className="text-lg">{hook}</p>
-        <p className="text-sm mt-4 font-sans uppercase font-light tracking-wider text-cream-200/50">
+        <p className="text-xs mt-4 font-sans uppercase font-light tracking-wider text-cream-200/50">
           {roles?.length ? getRolesDisplayString(roles) : "Frontend Developer"}
         </p>
       </div>
